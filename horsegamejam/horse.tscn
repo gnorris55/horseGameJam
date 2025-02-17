@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dppjjkw15migb"]
+
+[ext_resource type="Texture2D" uid="uid://do6l4v4uime6" path="res://Assets/Sprites/TestSprites/eraser.png" id="1_txjtu"]
+
+[node name="Horse" type="Node2D"]
+
+[node name="weapons" type="Node2D" parent="."]
+
+[node name="mainWeapons" type="Node2D" parent="weapons"]
+
+[node name="tailWeapons" type="Node2D" parent="weapons"]
+
+[node name="movement" type="Node2D" parent="."]
+
+[node name="horseSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_txjtu")
