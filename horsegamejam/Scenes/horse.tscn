@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ufg15"]
 radius = 85.0059
 
-[node name="Horse" type="Node2D"]
+[node name="Horse" type="Node2D" groups=["horse"]]
 script = ExtResource("1_nlkdp")
 
 [node name="weapons" type="Node2D" parent="."]
@@ -15,20 +15,24 @@ script = ExtResource("1_nlkdp")
 [node name="mainWeapons" type="Node2D" parent="weapons"]
 
 [node name="tailWeapons" type="Node2D" parent="weapons"]
+position = Vector2(-18, 63)
 script = ExtResource("2_gfgdi")
 
 [node name="weapon" type="Node2D" parent="weapons/tailWeapons"]
+position = Vector2(229, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="weapons/tailWeapons/weapon"]
-position = Vector2(181, 276)
 texture = ExtResource("3_mx00m")
 
 [node name="Area2D" type="Area2D" parent="weapons/tailWeapons/weapon"]
-position = Vector2(190, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapons/tailWeapons/weapon/Area2D"]
 position = Vector2(-12, -2)
 shape = SubResource("CircleShape2D_ufg15")
+
+[node name="tail" type="Line2D" parent="weapons/tailWeapons"]
+position = Vector2(229, 0)
+default_color = Color(0.688766, 0.485597, 0.252541, 1)
 
 [node name="movement" type="Node2D" parent="."]
 
