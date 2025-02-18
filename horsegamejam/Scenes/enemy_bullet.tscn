@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdw7332ecbb6"]
+
+[ext_resource type="Script" path="res://enemy_bullet.gd" id="1_2sprp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pkbtr"]
+radius = 25.1794
+
+[node name="enemyBullet" type="Node2D"]
+script = ExtResource("1_2sprp")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemyBullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pkbtr")
+
+[node name="BulletLife" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="BulletLife" to="." method="_on_bullet_life_timeout"]

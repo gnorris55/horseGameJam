@@ -2,8 +2,10 @@ extends Node
 
 
 const carrot = preload("res://Scenes/carrot.tscn")
+
 const enemy = preload("res://Scenes/base_enemy.tscn")
-var enemies = [enemy]
+const gun_enemy = preload("res://Scenes/gun_enemy.tscn")
+var enemies = [gun_enemy]
 var total_time = 0.0
 var accumulated_time = 0.0
 var spawn_rate = 3.0
@@ -72,11 +74,11 @@ func _process(delta: float) -> void:
 			initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
 		'''
 		if (total_time > 10 and enemies.size() < 2):
-			enemies.append(slow_enemy)
+			enemies.append(gun_enemy)
 			spawn_rareness += 4
 			#print("adding slow enemy")
 			#print(enemies)
-		
+	
 		if (total_time > 15 and enemies.size() < 3):
 			spawn_rareness += 4
 			enemies.append(fast_enemy)

@@ -23,6 +23,7 @@ enemyArea2D=""
 horseArea2D=""
 carrot=""
 enemyManager=""
+enemyBullet=""
 
 [input]
 

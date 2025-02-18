@@ -33,6 +33,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carrot"):
 		area.get_parent().queue_free()
 		money += 20
-	if area.is_in_group("enemyArea2D"):
+	elif area.is_in_group("enemyArea2D"):
 		take_damage(20)
+	elif area.is_in_group("enemyBullet"):
+		take_damage(1)
+		area.get_parent().queue_free()
 	
