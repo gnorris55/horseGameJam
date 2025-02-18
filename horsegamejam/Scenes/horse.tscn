@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=8 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -26,6 +26,10 @@ script = ExtResource("2_v3x75")
 [node name="Line2D" type="Line2D" parent="weapons/mainWeapons"]
 points = PackedVector2Array(0, 0, 833, 0)
 default_color = Color(0.948262, 0.0830758, 0, 1)
+
+[node name="attack_timer" type="Timer" parent="weapons/mainWeapons"]
+one_shot = true
+autostart = true
 
 [node name="tailWeapons" type="Node2D" parent="weapons"]
 position = Vector2(-18, 63)
@@ -58,3 +62,5 @@ script = ExtResource("4_k8850")
 
 [node name="horseSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_mx00m")
+
+[connection signal="timeout" from="weapons/mainWeapons/attack_timer" to="weapons/mainWeapons" method="_on_attack_timer_timeout"]
