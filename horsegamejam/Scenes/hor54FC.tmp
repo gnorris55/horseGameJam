@@ -23,7 +23,6 @@ script = ExtResource("2_v3x75")
 
 [node name="Line2D" type="Line2D" parent="weapons/mainWeapons"]
 points = PackedVector2Array(0, 0, 833, 0)
-default_color = Color(0.948262, 0.0830758, 0, 1)
 
 [node name="tailWeapons" type="Node2D" parent="weapons"]
 position = Vector2(-18, 63)

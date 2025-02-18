@@ -23,6 +23,5 @@ func _process(delta: float) -> void:
 		parent.position.y +=delta*speed
 	
 	var vec = Vector2(get_global_mouse_position().x - get_parent().position.x,get_global_mouse_position().y - get_parent().position.y)
-	print(vec.angle())
 	parent.rotation = vec.angle()
 	#get_node("/root/Horse//horseSprite").rotation = vec.angle()
