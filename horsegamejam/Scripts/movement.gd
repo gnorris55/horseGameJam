@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 300;#determined by wheels and fans that will be added
+var speed = 300; #determined by wheels and fans that will be added
 
 #var parent_pos = get_parent().position
 

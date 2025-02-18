@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var speed = 100
-@export var health = 50
+@export var health = 5
 
 var direction = Vector2.ZERO
 
@@ -29,4 +29,6 @@ func take_damage(damage):
 	#TODO: make the bounce back more realistic
 	global_position = global_position - direction*200
 	if (health <= 0):
+		var enemy_manager = get_parent()
+		enemy_manager.enemy_drop(global_position)
 		queue_free()

@@ -1,25 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://casp6m3llwv6b"]
 
 [ext_resource type="PackedScene" uid="uid://dppjjkw15migb" path="res://Scenes/horse.tscn" id="1_428cj"]
-[ext_resource type="Script" path="res://Scenes/enemy_manager.gd" id="1_wcg5p"]
+[ext_resource type="Script" path="res://Scripts/enemy_manager.gd" id="1_wcg5p"]
 [ext_resource type="PackedScene" uid="uid://b2n6qjgu5xgty" path="res://Scenes/base_enemy.tscn" id="2_fmo0f"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_8cfxs"]
+[ext_resource type="PackedScene" uid="uid://dwqw0tx4016op" path="res://Scenes/map.tscn" id="4_4l65s"]
 
 [node name="Node2D2" type="Node2D"]
 script = ExtResource("1_wcg5p")
 
 [node name="Horse" parent="." instance=ExtResource("1_428cj")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Horse"]
 zoom = Vector2(0.5, 0.5)
 
 [node name="baseEnemy" parent="." instance=ExtResource("2_fmo0f")]
 position = Vector2(606, -79)
 scale = Vector2(0.3, 0.3)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-z_index = -1
-position = Vector2(4, -44)
-scale = Vector2(4501.5, 3001.5)
-mesh = SubResource("QuadMesh_8cfxs")
+[node name="Map" parent="." instance=ExtResource("4_4l65s")]

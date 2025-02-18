@@ -21,6 +21,8 @@ horse="The main player character"
 tailWeapon=""
 enemyArea2D=""
 horseArea2D=""
+carrot=""
+enemyManager=""
 
 [input]
 
