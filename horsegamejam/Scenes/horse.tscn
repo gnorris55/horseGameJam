@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=9 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -7,9 +7,12 @@
 [ext_resource type="Script" path="res://Scripts/movement.gd" id="4_k8850"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ufg15"]
-radius = 85.0059
+radius = 34.3657
 
 [sub_resource type="PrismMesh" id="PrismMesh_no186"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phyna"]
+radius = 81.0247
 
 [node name="Horse" type="Node2D" groups=["horse"]]
 script = ExtResource("1_nlkdp")
@@ -39,6 +42,7 @@ script = ExtResource("2_gfgdi")
 position = Vector2(229, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="weapons/tailWeapons/weapon"]
+visible = false
 texture = ExtResource("3_mx00m")
 
 [node name="Area2D" type="Area2D" parent="weapons/tailWeapons/weapon"]
@@ -63,4 +67,10 @@ script = ExtResource("4_k8850")
 [node name="horseSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_mx00m")
 
+[node name="Area2D" type="Area2D" parent="." groups=["horseArea2D"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_phyna")
+
 [connection signal="timeout" from="weapons/mainWeapons/attack_timer" to="weapons/mainWeapons" method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="weapons/tailWeapons/weapon/Area2D" to="weapons/tailWeapons" method="_on_area_2d_area_entered"]

@@ -18,6 +18,9 @@ config/icon="res://icon.svg"
 [global_group]
 
 horse="The main player character"
+tailWeapon=""
+enemyArea2D=""
+horseArea2D=""
 
 [input]
 

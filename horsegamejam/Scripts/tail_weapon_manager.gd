@@ -13,7 +13,6 @@ var speed_scalar = 2
 
 var center_point = Vector2(0, 0)
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tail.add_point(global_position)
@@ -26,11 +25,9 @@ func _process(delta: float) -> void:
 	var horse_orientation = horse.rotation
 	
 	t += direction*delta*speed_scalar
-	print(horse_orientation)
 	
 	var limit1 = horse_orientation + -PI/3.0
 	var limit2 = horse_orientation + (PI + PI/3.0)
-	
 	
 	if (t < limit1):
 		direction = 1
@@ -46,8 +43,9 @@ func _process(delta: float) -> void:
 	
 	tail.points[0] = tail.to_local(global_position)
 	tail.points[1] = tail.to_local(weapon.global_position)
-	
-	
-	
-	
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("body entered")
+	if area.is_in_group("enemyArea2D"):
+		area.get_parent().take_damage(20)	
 	
