@@ -12,6 +12,7 @@ points = PackedVector2Array(0, 0, 833, 0)
 default_color = Color(0.948262, 0.0830758, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_g2lc2")

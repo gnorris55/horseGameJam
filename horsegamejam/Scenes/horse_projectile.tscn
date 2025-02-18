@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://chmhemdk8xujm"]
+
+[ext_resource type="Script" path="res://Scenes/horse_projectile.gd" id="1_6gtl8"]
+[ext_resource type="Texture2D" uid="uid://c6ag63hkrl2ky" path="res://Assets/Sprites/bullet.png" id="2_nwwr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc7tp"]
+size = Vector2(10, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkuvw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nwwr8")
+}],
+"loop": true,
+"name": &"bullet",
+"speed": 5.0
+}]
+
+[node name="HorseProjectile" type="Node2D"]
+script = ExtResource("1_6gtl8")
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="bullet" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_sc7tp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tkuvw")
+animation = &"bullet"
+
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
