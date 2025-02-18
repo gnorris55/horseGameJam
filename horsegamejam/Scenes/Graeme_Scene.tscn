@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cibh0d53ps6oi"]
+[gd_scene load_steps=3 format=3 uid="uid://cibh0d53ps6oi"]
 
 [ext_resource type="PackedScene" uid="uid://dppjjkw15migb" path="res://Scenes/horse.tscn" id="1_428cj"]
+[ext_resource type="PackedScene" uid="uid://b2n6qjgu5xgty" path="res://Scenes/base_enemy.tscn" id="2_fmo0f"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -8,3 +9,7 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
+
+[node name="baseEnemy" parent="." instance=ExtResource("2_fmo0f")]
+position = Vector2(606, -79)
+scale = Vector2(0.3, 0.3)
