@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=6 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
 [ext_resource type="Texture2D" uid="uid://do6l4v4uime6" path="res://Assets/Sprites/TestSprites/eraser.png" id="3_mx00m"]
+[ext_resource type="Script" path="res://Scripts/movement.gd" id="4_k8850"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ufg15"]
 radius = 85.0059
@@ -35,6 +36,7 @@ position = Vector2(229, 0)
 default_color = Color(0.688766, 0.485597, 0.252541, 1)
 
 [node name="movement" type="Node2D" parent="."]
+script = ExtResource("4_k8850")
 
 [node name="horseSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_mx00m")
