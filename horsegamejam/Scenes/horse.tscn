@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=7 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ufg15"]
 radius = 85.0059
+
+[sub_resource type="PrismMesh" id="PrismMesh_no186"]
 
 [node name="Horse" type="Node2D" groups=["horse"]]
 script = ExtResource("1_nlkdp")
@@ -34,6 +36,12 @@ shape = SubResource("CircleShape2D_ufg15")
 [node name="tail" type="Line2D" parent="weapons/tailWeapons"]
 position = Vector2(229, 0)
 default_color = Color(0.688766, 0.485597, 0.252541, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="weapons"]
+z_index = 2
+rotation = 3.14159
+scale = Vector2(100, 100)
+mesh = SubResource("PrismMesh_no186")
 
 [node name="movement" type="Node2D" parent="."]
 script = ExtResource("4_k8850")

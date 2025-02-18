@@ -23,13 +23,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	center_point = global_position 
+	var horse_orientation = horse.rotation
 	
 	t += direction*delta*speed_scalar
+	print(horse_orientation)
 	
-	if (t < -PI/4.0):
+	var limit1 = horse_orientation + -PI/3.0
+	var limit2 = horse_orientation + (PI + PI/3.0)
+	
+	
+	if (t < limit1):
 		direction = 1
 		
-	if (t > (PI + PI/4.0)):
+	if (t > limit2):
 		direction = -1
 	
 	
