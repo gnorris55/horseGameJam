@@ -2,7 +2,7 @@ extends Node2D
 
 
 var attack_type = "laser"
-@onready var horse_node = get_node("/root/Horse")
+@onready var horse_node = get_parent().get_parent()
 
 
 const LASER_ATTACK_TIME = 0.5

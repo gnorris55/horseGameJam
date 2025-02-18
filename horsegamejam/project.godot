@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="horseGameJam"
-run/main_scene="res://Scenes/horse.tscn"
+run/main_scene="res://Scenes/Graeme_Scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
