@@ -6,14 +6,14 @@ const healt_potion = preload("res://Scenes/health_potion.tscn")
 
 const enemy = preload("res://Scenes/base_enemy.tscn")
 const gun_enemy = preload("res://Scenes/gun_enemy.tscn")
-var enemies = [gun_enemy]
+var enemies = [enemy]
 
-var drop_probs = [0.25, 0.50, 0.25]
+var drop_probs = [0.5, 0.75]
 
 var total_time = 0.0
 var accumulated_time = 0.0
 var spawn_rate = 3.0
-var spawn_radius = 1500
+var spawn_radius = 750
 
 # Called when the node enters the scene tree for the first time.
 
@@ -75,13 +75,14 @@ func _process(delta: float) -> void:
 			var new_instance = enemies[enemy_spawn_index].instantiate()
 			#var new_instance = enemy_arr[3].instantiate()
 			initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
-		'''
+		
 		if (total_time > 10 and enemies.size() < 2):
 			enemies.append(gun_enemy)
 			spawn_rareness += 4
 			#print("adding slow enemy")
 			#print(enemies)
-	
+			
+		'''
 		if (total_time > 15 and enemies.size() < 3):
 			spawn_rareness += 4
 			enemies.append(fast_enemy)
@@ -106,7 +107,7 @@ func enemy_drop(position: Vector2):
 		#enemy_instance.target_position = target_position
 		add_child(curr_carrot)
 	elif (drop < drop_probs[1]):
-		var curr_health = carrot.instantiate()
+		var curr_health = healt_potion.instantiate()
 		curr_health.position = position
 		#enemy_instance.target_position = target_position
 		add_child(curr_health)

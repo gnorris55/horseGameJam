@@ -58,7 +58,8 @@ shape = SubResource("CircleShape2D_ufg15")
 
 [node name="tail" type="Line2D" parent="weapons/tailWeapons"]
 position = Vector2(229, 0)
-default_color = Color(0.688766, 0.485597, 0.252541, 1)
+width = 3.0
+default_color = Color(0.407106, 0.276338, 0.124037, 1)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="weapons"]
 z_index = 2
@@ -99,6 +100,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_x2aop")
 theme_override_styles/fill = SubResource("StyleBoxFlat_avs6o")
 fill_mode = 1
 show_percentage = false
+
+[node name="currency" type="Label" parent="playerUI"]
+offset_left = 707.0
+offset_top = 62.0
+offset_right = 747.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="weapons/mainWeapons/attack_cooldown" to="weapons/mainWeapons" method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="weapons/tailWeapons/weapon/Area2D" to="weapons/tailWeapons" method="_on_area_2d_area_entered"]
