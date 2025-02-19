@@ -1,6 +1,9 @@
 extends Node2D
 
-
+var vel = Vector2(0,0)
+var length = 0
+var damage = 0
+var speed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,19 +12,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	position += vel*speed*delta
 
-func set_type(name):
+func set_type(name,advance):
 	$AnimatedSprite2D.play(name)
 	if name == "bullet":
-		$Area2D.bullet = true
+		$Area2D/bullet.disabled = false
+	elif name == "laser":
+		$Area2D/laser.disabled = false
+	rotation = vel.angle()
+	position += vel*advance*$AnimatedSprite2D.scale.x
 	
 	
 func _on_attack_timer_timeout() -> void:
 	queue_free()
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("body entered by LASER")
+	
 	if area.is_in_group("enemyArea2D"):
-		print("attacking enemy")
-		#area.get_parent().take_damage(damage)	
+		print("Enemy enterd by horse projectile")
+		area.get_parent().take_damage(damage)	

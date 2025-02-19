@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://chmhemdk8xujm"]
+[gd_scene load_steps=7 format=3 uid="uid://chmhemdk8xujm"]
 
-[ext_resource type="Script" path="res://Scenes/horse_projectile.gd" id="1_6gtl8"]
+[ext_resource type="Script" path="res://Scripts/horse_projectile.gd" id="1_6gtl8"]
 [ext_resource type="Texture2D" uid="uid://c6ag63hkrl2ky" path="res://Assets/Sprites/bullet.png" id="2_nwwr8"]
+[ext_resource type="Texture2D" uid="uid://bleijhuq2y3xv" path="res://Assets/Sprites/laser2.png" id="3_2y8sl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc7tp"]
 size = Vector2(10, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksuby"]
+size = Vector2(49.6, 4.8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tkuvw"]
 animations = [{
@@ -14,6 +18,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"bullet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2y8sl")
+}],
+"loop": true,
+"name": &"laser",
 "speed": 5.0
 }]
 
@@ -25,13 +37,22 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(5, 5)
 collision_layer = 2
 
 [node name="bullet" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_sc7tp")
+disabled = true
+
+[node name="laser" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.200001, -4.76837e-08)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ksuby")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_tkuvw")
-animation = &"bullet"
+animation = &"laser"
 
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
