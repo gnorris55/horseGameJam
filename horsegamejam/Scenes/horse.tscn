@@ -3,12 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
 [ext_resource type="Script" path="res://Scripts/main_weapons.gd" id="2_v3x75"]
-[ext_resource type="Texture2D" uid="uid://do6l4v4uime6" path="res://Assets/Sprites/TestSprites/eraser.png" id="3_mx00m"]
 [ext_resource type="Script" path="res://Scripts/movement.gd" id="4_k8850"]
+[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/machete.png" id="4_rr0rv"]
 [ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="6_xb4is"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ufg15"]
-radius = 9.05539
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_al8qo"]
+radius = 5.0
+height = 24.0
 
 [sub_resource type="PrismMesh" id="PrismMesh_no186"]
 
@@ -44,17 +45,21 @@ script = ExtResource("2_gfgdi")
 
 [node name="weapon" type="Node2D" parent="weapons/tailWeapons"]
 position = Vector2(59, 20)
-
-[node name="Sprite2D" type="Sprite2D" parent="weapons/tailWeapons/weapon"]
-visible = false
-texture = ExtResource("3_mx00m")
+scale = Vector2(1.35, 1.35)
 
 [node name="Area2D" type="Area2D" parent="weapons/tailWeapons/weapon"]
-position = Vector2(0, -1)
+position = Vector2(8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapons/tailWeapons/weapon/Area2D"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_ufg15")
+position = Vector2(3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_al8qo")
+
+[node name="Sprite2D" type="Sprite2D" parent="weapons/tailWeapons/weapon"]
+texture_filter = 1
+position = Vector2(10, 0)
+rotation = 1.5708
+texture = ExtResource("4_rr0rv")
 
 [node name="tail" type="Line2D" parent="weapons/tailWeapons"]
 position = Vector2(229, 0)

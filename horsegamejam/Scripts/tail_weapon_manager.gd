@@ -2,14 +2,14 @@ extends Node2D
 
 @onready var horse: Node2D = $"../.."
 @onready var weapon: Node2D = $weapon
-@onready var sprite_2d: Sprite2D = $weapon/Sprite2D
 @onready var tail: Line2D = $tail
+@onready var sprite_2d: Sprite2D = $weapon/Sprite2D
 
 
 var radius = 100
 var direction = -1
 var t = PI / 2
-var speed_scalar = 2
+var speed_scalar = 3
 
 var center_point = Vector2(0, 0)
 
@@ -34,12 +34,15 @@ func _process(delta: float) -> void:
 		
 	if (t > limit2):
 		direction = -1
-	
-	
+
 	var x = center_point.x + radius * cos(t)
 	var y = center_point.y + radius * sin(t) 
 	
+	#sprites.rotation = Vector2(x,y).normalized().angle()
+	weapon.global_rotation = Vector2(horse_orientation + x,horse_orientation + y).normalized().angle()
+	
 	weapon.global_position = Vector2(x, y)
+	#sprites.global_position = Vector2(x, y)
 	
 	tail.points[0] = tail.to_local(global_position)
 	tail.points[1] = tail.to_local(weapon.global_position)

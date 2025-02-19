@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0wa58dx5kigj"]
 
-[ext_resource type="Script" path="res://gun_enemy.gd" id="1_xelk1"]
+[ext_resource type="Script" path="res://Scripts/gun_enemy.gd" id="1_xelk1"]
 [ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="2_oymxs"]
 
 [sub_resource type="Curve" id="Curve_w7pci"]
