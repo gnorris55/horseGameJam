@@ -1,8 +1,13 @@
 extends Node2D
 
+#-----------OLD LASER CODE-----------
+#lasers are horse projectiles now
+
 var vel = Vector2(0,0)
 var length = 0
 var damage = 0
+
+
 
 
 # Called when the node enters the scene tree for the first time.
