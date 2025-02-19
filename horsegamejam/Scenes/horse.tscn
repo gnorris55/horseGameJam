@@ -1,18 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=14 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
 [ext_resource type="Script" path="res://Scripts/main_weapons.gd" id="2_v3x75"]
 [ext_resource type="Texture2D" uid="uid://do6l4v4uime6" path="res://Assets/Sprites/TestSprites/eraser.png" id="3_mx00m"]
 [ext_resource type="Script" path="res://Scripts/movement.gd" id="4_k8850"]
+[ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="6_xb4is"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ufg15"]
-radius = 34.3657
+radius = 9.05539
 
 [sub_resource type="PrismMesh" id="PrismMesh_no186"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_phyna"]
-radius = 81.0247
+radius = 23.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22p5n"]
 bg_color = Color(1, 0, 0, 0.47451)
@@ -38,20 +39,21 @@ script = ExtResource("2_v3x75")
 autostart = true
 
 [node name="tailWeapons" type="Node2D" parent="weapons"]
-position = Vector2(-18, 63)
+position = Vector2(0, 18)
 script = ExtResource("2_gfgdi")
 
 [node name="weapon" type="Node2D" parent="weapons/tailWeapons"]
-position = Vector2(229, 0)
+position = Vector2(59, 20)
 
 [node name="Sprite2D" type="Sprite2D" parent="weapons/tailWeapons/weapon"]
 visible = false
 texture = ExtResource("3_mx00m")
 
 [node name="Area2D" type="Area2D" parent="weapons/tailWeapons/weapon"]
+position = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapons/tailWeapons/weapon/Area2D"]
-position = Vector2(-12, -2)
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ufg15")
 
 [node name="tail" type="Line2D" parent="weapons/tailWeapons"]
@@ -61,14 +63,14 @@ default_color = Color(0.688766, 0.485597, 0.252541, 1)
 [node name="MeshInstance2D" type="MeshInstance2D" parent="weapons"]
 z_index = 2
 rotation = 3.14159
-scale = Vector2(100, 100)
+scale = Vector2(16.6613, 16.6613)
 mesh = SubResource("PrismMesh_no186")
 
 [node name="movement" type="Node2D" parent="."]
 script = ExtResource("4_k8850")
 
 [node name="horseSprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_mx00m")
+texture = ExtResource("6_xb4is")
 
 [node name="Area2D" type="Area2D" parent="." groups=["horseArea2D"]]
 

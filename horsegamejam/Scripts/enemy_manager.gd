@@ -2,10 +2,14 @@ extends Node
 
 
 const carrot = preload("res://Scenes/carrot.tscn")
+const healt_potion = preload("res://Scenes/health_potion.tscn")
 
 const enemy = preload("res://Scenes/base_enemy.tscn")
 const gun_enemy = preload("res://Scenes/gun_enemy.tscn")
 var enemies = [gun_enemy]
+
+var drop_probs = [0.25, 0.50, 0.25]
+
 var total_time = 0.0
 var accumulated_time = 0.0
 var spawn_rate = 3.0
@@ -15,7 +19,6 @@ var spawn_radius = 1500
 
 func initialize_enemy(enemy_instance, starting_position: Vector2 = Vector2(0, 0), target_position: Vector2 = Vector2(10, 0) ):
 	enemy_instance.position = starting_position
-	enemy_instance.scale = Vector2(0.25, 0.25)
 	#enemy_instance.target_position = target_position
 	add_child(enemy_instance)
 
@@ -94,9 +97,18 @@ func _process(delta: float) -> void:
 	accumulated_time += delta	
 	
 func enemy_drop(position: Vector2):
-	var curr_carrot = carrot.instantiate()
-	curr_carrot.position = position
-	#enemy_instance.target_position = target_position
-	add_child(curr_carrot)
+	randomize()
+	var drop = randf()
+	print(drop)
+	if (drop < drop_probs[0]):	
+		var curr_carrot = carrot.instantiate()
+		curr_carrot.position = position
+		#enemy_instance.target_position = target_position
+		add_child(curr_carrot)
+	elif (drop < drop_probs[1]):
+		var curr_health = carrot.instantiate()
+		curr_health.position = position
+		#enemy_instance.target_position = target_position
+		add_child(curr_health)
 		
 	#print(accumulated_time)

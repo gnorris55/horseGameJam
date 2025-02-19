@@ -24,6 +24,7 @@ horseArea2D=""
 carrot=""
 enemyManager=""
 enemyBullet=""
+healthPotion=""
 
 [input]
 

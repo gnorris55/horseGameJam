@@ -6,6 +6,11 @@ extends Node2D
 @export var health = 50
 @export var stamina = 50
 
+var main_weapon_state = 0
+var tail_weapon_state = 0
+var armour_type_state = 0
+var beer_fridge_state = 0
+
 var money = 0
 
 # Called when the node enters the scene tree for the first time.

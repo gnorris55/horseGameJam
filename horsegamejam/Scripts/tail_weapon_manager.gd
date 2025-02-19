@@ -6,7 +6,7 @@ extends Node2D
 @onready var tail: Line2D = $tail
 
 
-var radius = 200
+var radius = 100
 var direction = -1
 var t = PI / 2
 var speed_scalar = 2

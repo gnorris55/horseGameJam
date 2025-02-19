@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2n6qjgu5xgty"]
 
 [ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_jhv1h"]
-[ext_resource type="Texture2D" uid="uid://cjg5mvvmso3lk" path="res://Assets/Sprites/TestSprites/scissor.png" id="2_vbg6m"]
+[ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="2_8no2y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjq2d"]
-radius = 398.08
+radius = 23.0
 
 [sub_resource type="Curve" id="Curve_dnpaa"]
 _data = [Vector2(0.0674157, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.859551, 0.175824), 0.0, 0.0, 0, 0]
@@ -14,7 +14,7 @@ point_count = 2
 script = ExtResource("1_jhv1h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vbg6m")
+texture = ExtResource("2_8no2y")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemyArea2D"]]
 
