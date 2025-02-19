@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2n6qjgu5xgty"]
+[gd_scene load_steps=5 format=3 uid="uid://b2n6qjgu5xgty"]
 
 [ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_jhv1h"]
 [ext_resource type="Texture2D" uid="uid://cjg5mvvmso3lk" path="res://Assets/Sprites/TestSprites/scissor.png" id="2_vbg6m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjq2d"]
 radius = 398.08
+
+[sub_resource type="Curve" id="Curve_dnpaa"]
+_data = [Vector2(0.0674157, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.859551, 0.175824), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="baseEnemy" type="Node2D"]
 script = ExtResource("1_jhv1h")
@@ -16,3 +20,23 @@ texture = ExtResource("2_vbg6m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_gjq2d")
+
+[node name="deathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="deathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_min = 20.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_dnpaa")
+color = Color(1, 0, 0, 1)
+
+[connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=13 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -13,6 +13,18 @@ radius = 34.3657
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_phyna"]
 radius = 81.0247
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22p5n"]
+bg_color = Color(1, 0, 0, 0.47451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_haf6l"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2aop"]
+bg_color = Color(0, 0.6, 0, 0.482353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avs6o"]
+bg_color = Color(0, 1, 0, 1)
 
 [node name="Horse" type="Node2D" groups=["horse"]]
 script = ExtResource("1_nlkdp")
@@ -63,5 +75,29 @@ texture = ExtResource("3_mx00m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_phyna")
 
+[node name="playerUI" type="CanvasLayer" parent="."]
+
+[node name="healthBar" type="ProgressBar" parent="playerUI"]
+offset_left = 918.0
+offset_top = 24.0
+offset_right = 1094.0
+offset_bottom = 51.0
+theme_override_styles/background = SubResource("StyleBoxFlat_22p5n")
+theme_override_styles/fill = SubResource("StyleBoxFlat_haf6l")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="staminaBar" type="ProgressBar" parent="playerUI"]
+offset_left = 706.0
+offset_top = 24.0
+offset_right = 897.0
+offset_bottom = 51.0
+theme_override_styles/background = SubResource("StyleBoxFlat_x2aop")
+theme_override_styles/fill = SubResource("StyleBoxFlat_avs6o")
+fill_mode = 1
+show_percentage = false
+
 [connection signal="timeout" from="weapons/mainWeapons/attack_cooldown" to="weapons/mainWeapons" method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="weapons/tailWeapons/weapon/Area2D" to="weapons/tailWeapons" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
