@@ -9,7 +9,7 @@
 [node name="Horse" parent="." instance=ExtResource("1_428cj")]
 
 [node name="Camera2D" type="Camera2D" parent="Horse"]
-zoom = Vector2(0.1, 0.1)
+zoom = Vector2(4, 4)
 
 [node name="Map" parent="." instance=ExtResource("4_4l65s")]
 

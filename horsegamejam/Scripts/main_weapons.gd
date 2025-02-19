@@ -8,18 +8,21 @@ var projectile_scene = preload("res://Scenes/horse_projectile.tscn")
 var rng = RandomNumberGenerator.new()
 @onready var main_scene = horse_node.get_parent()
 
+# offset needs to be half length bullet * scale of bullet animated sprite
+var attack_ind = 1
+const attack_names = ["laser","machine_gun","shotgun"]
+const GUNS = {
+	"laser":{"spread":0,"bullets":1,"damage":20,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":0},
+	"machine_gun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0},
+	"shotgun":{"spread":10,"bullets":10,"damage":3,"cooldown":0.5,"speed":700,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0}
+	}
+var countdown_finished = true
 
+
+#old laser system
 #const LASER_ATTACK_TIME = 0.5
 #const LASER_DAMAGE = 3
 
-# offset needs to be half length bullet * scale of bullet animated sprite
-var attack_ind = 1
-const attack_names = ["laser","machine_gun"]
-const GUNS = {
-	"laser":{"spread":0,"bullets":1,"damage":3,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":0},
-	"machine_gun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0}
-	}
-var countdown_finished = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,27 +31,29 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_Q):
+	if Input.is_action_just_pressed("switch_attack"):
 		attack_ind +=1
 		if attack_ind >= attack_names.size():
 			attack_ind = 0
 		attack_type = attack_names[attack_ind]
 	if Input.is_action_pressed("attack") and horse_node.stamina >= GUNS[attack_type].stamina:
 		if countdown_finished == true:
-			var l = projectile_scene.instantiate()
-			main_scene.add_child(l)
-			l.damage = GUNS[attack_type].damage
-			l.speed = GUNS[attack_type].speed
-			l.get_node("attack_timer").wait_time = GUNS[attack_type].bullet_duration
-			l.get_node("attack_timer").start()
-			var vec = Vector2(get_global_mouse_position().x - horse_node.position.x,get_global_mouse_position().y - horse_node.position.y)
-			vec = vec.rotated(rng.randf_range(-(PI/180 * GUNS[attack_type].spread),PI/180 * GUNS[attack_type].spread))
-			l.vel = vec.limit_length(1)
-			l.position = horse_node.position
-			l.set_type(GUNS[attack_type].bullet_type,GUNS[attack_type].offset)
-			
-			horse_node.stamina -= GUNS[attack_type].stamina
-			horse_node.stamina_bar.value = horse_node.stamina 
+			#var i = 0
+			for i in GUNS[attack_type].bullets:
+				var l = projectile_scene.instantiate()
+				main_scene.add_child(l)
+				l.damage = GUNS[attack_type].damage
+				l.speed = GUNS[attack_type].speed
+				l.get_node("attack_timer").wait_time = GUNS[attack_type].bullet_duration
+				l.get_node("attack_timer").start()
+				var vec = Vector2(get_global_mouse_position().x - horse_node.position.x,get_global_mouse_position().y - horse_node.position.y)
+				vec = vec.rotated(rng.randf_range(-(PI/180 * GUNS[attack_type].spread),PI/180 * GUNS[attack_type].spread))
+				l.vel = vec.limit_length(1)
+				l.position = horse_node.position
+				l.set_type(GUNS[attack_type].bullet_type,GUNS[attack_type].offset)
+				
+				horse_node.stamina -= GUNS[attack_type].stamina
+				horse_node.stamina_bar.value = horse_node.stamina 
 			
 			
 			#---old laser code ---

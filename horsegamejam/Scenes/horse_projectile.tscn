@@ -8,7 +8,7 @@
 size = Vector2(10, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksuby"]
-size = Vector2(49.6, 4.8)
+size = Vector2(50, 4.8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tkuvw"]
 animations = [{
@@ -40,11 +40,12 @@ one_shot = true
 collision_layer = 2
 
 [node name="bullet" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_sc7tp")
 disabled = true
 
 [node name="laser" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.200001, -4.76837e-08)
+position = Vector2(-2.38419e-07, -4.76837e-08)
 shape = SubResource("RectangleShape2D_ksuby")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
