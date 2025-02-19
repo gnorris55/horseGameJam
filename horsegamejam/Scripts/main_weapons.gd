@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var attack_type = "machine_gun"
+var attack_type = "machine_gun"#laser,machine_gun
 @onready var horse_node = get_parent().get_parent()
 var laser_scene = preload("res://Scenes/laser.tscn")
 var projectile_scene = preload("res://Scenes/horse_projectile.tscn")
@@ -13,9 +13,11 @@ var rng = RandomNumberGenerator.new()
 #const LASER_DAMAGE = 3
 
 # offset needs to be half length bullet * scale of bullet animated sprite
+var attack_ind = 1
+const attack_names = ["laser","machine_gun"]
 const GUNS = {
-	"laser":{"spread":0,"bullets":1,"damage":3,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25},
-	"machine_gun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2}
+	"laser":{"spread":0,"bullets":1,"damage":3,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":0},
+	"machine_gun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0}
 	}
 var countdown_finished = true
 
@@ -26,7 +28,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("attack"):
+	if Input.is_key_pressed(KEY_Q):
+		attack_ind +=1
+		if attack_ind >= attack_names.size():
+			attack_ind = 0
+		attack_type = attack_names[attack_ind]
+	if Input.is_action_pressed("attack") and horse_node.stamina >= GUNS[attack_type].stamina:
 		if countdown_finished == true:
 			var l = projectile_scene.instantiate()
 			main_scene.add_child(l)
@@ -40,7 +47,8 @@ func _process(delta: float) -> void:
 			l.position = horse_node.position
 			l.set_type(GUNS[attack_type].bullet_type,GUNS[attack_type].offset)
 			
-	
+			horse_node.stamina -= GUNS[attack_type].stamina
+			horse_node.stamina_bar.value = horse_node.stamina 
 			
 			
 			#---old laser code ---

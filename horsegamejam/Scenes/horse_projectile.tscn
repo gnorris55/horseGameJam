@@ -46,7 +46,6 @@ disabled = true
 
 [node name="laser" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.200001, -4.76837e-08)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ksuby")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
