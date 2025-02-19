@@ -6,9 +6,10 @@ const ENEMY_BULLET = preload("res://Scenes/enemy_bullet.tscn")
 @onready var death_particles: CPUParticles2D = $deathParticles
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var area_2d: Area2D = $Area2D
+@onready var health_bar: ProgressBar = $healthBar
 
 @export var speed = 50
-@export var health = 5
+@export var health = 50
 
 var direction = Vector2.ZERO
 var target_position = Vector2.ZERO
@@ -16,7 +17,8 @@ var shooting_radius = [300, 800]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	health_bar.max_value = health
+	health_bar.value = health
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,9 +34,10 @@ func movement(delta: float):
 		
 		global_position += speed*delta*direction
 
-func take_damage(damage):
+func take_damage(damage, hit_back = false):
 	health -= damage
-	print(health)
+	health -= damage
+	health_bar.value = health
 
 	
 	if (health <= 0):
@@ -44,7 +47,7 @@ func take_damage(damage):
 		death_particles.emitting = true
 		sprite_2d.visible = false
 		area_2d.queue_free()
-	else:
+	elif (hit_back):
 		global_position = global_position - direction*200	
 
 func shoot():

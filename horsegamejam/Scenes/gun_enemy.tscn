@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0wa58dx5kigj"]
+[gd_scene load_steps=7 format=3 uid="uid://c0wa58dx5kigj"]
 
 [ext_resource type="Script" path="res://Scripts/gun_enemy.gd" id="1_xelk1"]
 [ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="2_oymxs"]
@@ -9,6 +9,12 @@ point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5fw7"]
 radius = 19.6469
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pngqo"]
+bg_color = Color(1, 0, 0, 0.47451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwgvi"]
+bg_color = Color(1, 0, 0, 1)
 
 [node name="gunEnemy" type="Node2D"]
 script = ExtResource("1_xelk1")
@@ -41,6 +47,17 @@ shape = SubResource("CircleShape2D_w5fw7")
 [node name="shootTimer" type="Timer" parent="." groups=["enemyBullet"]]
 wait_time = 5.0
 autostart = true
+
+[node name="healthBar" type="ProgressBar" parent="."]
+offset_left = -26.0
+offset_top = -39.0
+offset_right = 26.0
+offset_bottom = -31.0
+theme_override_styles/background = SubResource("StyleBoxFlat_pngqo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uwgvi")
+value = 100.0
+fill_mode = 1
+show_percentage = false
 
 [connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="shootTimer" to="." method="_on_shoot_timer_timeout"]

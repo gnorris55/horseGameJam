@@ -6,6 +6,21 @@ const healt_potion = preload("res://Scenes/health_potion.tscn")
 
 const enemy = preload("res://Scenes/base_enemy.tscn")
 const gun_enemy = preload("res://Scenes/gun_enemy.tscn")
+
+const ROUND_STATE = 0
+const TRANSITION_STATE = 1
+const BREAK_STATE = 2
+
+
+@onready var round_num_label: Label = $CanvasLayer/roundNum
+@onready var time_left_round: Label = $CanvasLayer/timeLeftRound
+@onready var time_left_break: Label = $CanvasLayer/timeLeftBreak
+@onready var num_enemies_label: Label = $CanvasLayer/numEnemiesLabel
+
+@onready var round_timer: Timer = $roundTimer
+@onready var break_timer: Timer = $breakTimer
+
+
 var enemies = [enemy]
 
 var drop_probs = [0.5, 0.75]
@@ -13,7 +28,14 @@ var drop_probs = [0.5, 0.75]
 var total_time = 0.0
 var accumulated_time = 0.0
 var spawn_rate = 3.0
-var spawn_radius = 750
+var spawn_radius = 1500
+
+var current_round = 1
+var spawning_active = true
+
+var round_state = 0
+
+var num_enemies = 0
 
 # Called when the node enters the scene tree for the first time.
 
@@ -58,46 +80,66 @@ func get_enemy_type() -> int:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	num_enemies_label.text = "enemies: " + str(num_enemies)
 	
-	if (accumulated_time >= spawn_rate):
-		#print("enemy should spawn")
-		#print(random_value)
-		
-		var spawn_number = floor(log(0.1*total_time + 1)) + 1
-		print(spawn_number)
-		
-		#print("number to spawn: " + str(spawn_number))
-		
-		for i in range(spawn_number):
-			#print("enemy array size: " + str(enemies.size()))
-			var random_value = randf()
-			var enemy_spawn_index = get_enemy_type()
-			var new_instance = enemies[enemy_spawn_index].instantiate()
-			#var new_instance = enemy_arr[3].instantiate()
-			initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
-		
-		if (total_time > 10 and enemies.size() < 2):
-			enemies.append(gun_enemy)
-			spawn_rareness += 4
-			#print("adding slow enemy")
-			#print(enemies)
-			
-		'''
-		if (total_time > 15 and enemies.size() < 3):
-			spawn_rareness += 4
-			enemies.append(fast_enemy)
-		
-		if (total_time > 20 and enemies.size() < 4):
-			spawn_rareness += 3
-			enemies.append(teleport_enemy)
-		'''
-		accumulated_time -= spawn_rate
-		
-			
-	total_time += delta
-	accumulated_time += delta	
+	if round_state == TRANSITION_STATE and num_enemies <= 0:
+		break_timer.start()
+		round_state = BREAK_STATE
+		spawning_active = false
+		break_timer.start()
 	
+	if (round_state == ROUND_STATE and spawning_active):
+	
+		if (accumulated_time >= spawn_rate):
+			#print("enemy should spawn")
+			#print(random_value)
+			
+			#var spawn_number = floor(log(0.1*total_time + 1)) + 1
+			var spawn_number = floor(log(0.1*total_time + 1)) + 2 + floor(0.1*total_time)
+			num_enemies += spawn_number
+			#print(spawn_number)
+			
+			#print("number to spawn: " + str(spawn_number))
+			
+			for i in range(spawn_number):
+				#print("enemy array size: " + str(enemies.size()))
+				var random_value = randf()
+				var enemy_spawn_index = get_enemy_type()
+				var new_instance = enemies[enemy_spawn_index].instantiate()
+				#var new_instance = enemy_arr[3].instantiate()
+				initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
+			
+			if (total_time > 10 and enemies.size() < 2):
+				enemies.append(gun_enemy)
+				spawn_rareness += 4
+				#print("adding slow enemy")
+				#print(enemies)
+				
+			'''
+			if (total_time > 15 and enemies.size() < 3):
+				spawn_rareness += 4
+				enemies.append(fast_enemy)
+			
+			if (total_time > 20 and enemies.size() < 4):
+				spawn_rareness += 3
+				enemies.append(teleport_enemy)
+			'''
+			accumulated_time -= spawn_rate
+			
+		time_left_round.text = "round time left: " + str(round_timer.time_left) 
+		
+			
+		total_time += delta
+		accumulated_time += delta	
+		
+	else:
+		time_left_break.text = "break time left: " + str(break_timer.time_left) 
+	
+	print(round_state)
 func enemy_drop(position: Vector2):
+	
+	num_enemies -= 1
+	
 	randomize()
 	var drop = randf()
 	print(drop)
@@ -113,3 +155,21 @@ func enemy_drop(position: Vector2):
 		add_child(curr_health)
 		
 	#print(accumulated_time)
+
+
+func _on_round_timer_timeout() -> void:
+	spawning_active = false
+	round_state = TRANSITION_STATE
+
+
+func _on_break_timer_timeout() -> void:
+	print("timed out")
+	round_state = ROUND_STATE
+	spawning_active = true
+	
+	round_timer.wait_time = round_timer.wait_time + 1
+	round_timer.start()
+	current_round += 1
+	round_num_label.text = "current round: " + str(current_round)
+	
+	

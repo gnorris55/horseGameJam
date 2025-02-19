@@ -1,19 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://casp6m3llwv6b"]
+[gd_scene load_steps=4 format=3 uid="uid://casp6m3llwv6b"]
 
 [ext_resource type="PackedScene" uid="uid://dppjjkw15migb" path="res://Scenes/horse.tscn" id="1_428cj"]
-[ext_resource type="Script" path="res://Scripts/enemy_manager.gd" id="1_wcg5p"]
-[ext_resource type="PackedScene" uid="uid://b2n6qjgu5xgty" path="res://Scenes/base_enemy.tscn" id="2_fmo0f"]
 [ext_resource type="PackedScene" uid="uid://dwqw0tx4016op" path="res://Scenes/map.tscn" id="4_4l65s"]
+[ext_resource type="PackedScene" uid="uid://npctohpgyyko" path="res://Scenes/enemy_manager.tscn" id="5_llilm"]
 
 [node name="Node2D2" type="Node2D"]
-script = ExtResource("1_wcg5p")
 
 [node name="Horse" parent="." instance=ExtResource("1_428cj")]
 
 [node name="Camera2D" type="Camera2D" parent="Horse"]
-zoom = Vector2(1.5, 1.5)
-
-[node name="baseEnemy" parent="." instance=ExtResource("2_fmo0f")]
-position = Vector2(606, -79)
+zoom = Vector2(0.1, 0.1)
 
 [node name="Map" parent="." instance=ExtResource("4_4l65s")]
+
+[node name="enemyMananager" parent="." instance=ExtResource("5_llilm")]
