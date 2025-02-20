@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=19 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/movement.gd" id="4_k8850"]
 [ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/machete.png" id="4_rr0rv"]
 [ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="6_xb4is"]
+[ext_resource type="Texture2D" uid="uid://beb47wna515g0" path="res://Assets/Sprites/Horse.png" id="7_tkv7t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_al8qo"]
 radius = 5.0
@@ -27,6 +28,35 @@ bg_color = Color(0, 0.6, 0, 0.482353)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avs6o"]
 bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atnxk"]
+atlas = ExtResource("7_tkv7t")
+region = Rect2(0, 0, 21, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggt0n"]
+atlas = ExtResource("7_tkv7t")
+region = Rect2(21, 0, 21, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8ovv"]
+atlas = ExtResource("7_tkv7t")
+region = Rect2(42, 0, 21, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5n24l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atnxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggt0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8ovv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Horse" type="Node2D" groups=["horse"]]
 script = ExtResource("1_nlkdp")
@@ -67,6 +97,7 @@ width = 3.0
 default_color = Color(0.407106, 0.276338, 0.124037, 1)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="weapons"]
+visible = false
 z_index = 2
 rotation = 3.14159
 scale = Vector2(16.6613, 16.6613)
@@ -76,6 +107,7 @@ mesh = SubResource("PrismMesh_no186")
 script = ExtResource("4_k8850")
 
 [node name="horseSprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("6_xb4is")
 
 [node name="Area2D" type="Area2D" parent="." groups=["horseArea2D"]]
@@ -112,6 +144,9 @@ offset_top = 62.0
 offset_right = 747.0
 offset_bottom = 85.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="horseSpriteAnimated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5n24l")
 
 [connection signal="timeout" from="weapons/mainWeapons/attack_cooldown" to="weapons/mainWeapons" method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="weapons/tailWeapons/weapon/Area2D" to="weapons/tailWeapons" method="_on_area_2d_area_entered"]

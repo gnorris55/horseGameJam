@@ -28,8 +28,9 @@ func _on_attack_timer_timeout() -> void:
 	queue_free()
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	
 	if area.is_in_group("enemyArea2D"):
 		print("Enemy enterd by horse projectile")
 		area.get_parent().take_damage(damage)	
+		queue_free()
+	elif area.is_in_group("enemyShieldArea"):
 		queue_free()

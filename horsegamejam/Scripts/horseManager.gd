@@ -23,6 +23,7 @@ func _ready() -> void:
 	
 	stamina_bar.max_value = stamina
 	stamina_bar.value = stamina
+	$horseSpriteAnimated.play()
 	
 	
 func take_damage(damage):
