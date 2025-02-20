@@ -13,7 +13,11 @@ config_version=5
 config/name="horseGameJam"
 run/main_scene="res://Scenes/Graeme_Scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Sprites/TestSprites/icon.svg"
+
+[autoload]
+
+globalPimpProperties="*res://Scripts/global_pimp_properties.gd"
 
 [global_group]
 
