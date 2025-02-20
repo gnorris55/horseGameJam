@@ -32,9 +32,8 @@ func take_damage(damage):
 	
 	
 	if (health <= 0):
-		print("game over")
-	
-	print("health lvl: " + str(health))
+		get_parent().game_over()
+
 	health_bar.value = health
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

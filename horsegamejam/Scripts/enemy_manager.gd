@@ -132,9 +132,6 @@ func _process(delta: float) -> void:
 		time_left_break.text = "break time left: " + str(break_timer.time_left) 
 	
 	
-
-	print(round_state)
-	
 	
 func enemy_drop(position: Vector2):
 	
@@ -163,7 +160,6 @@ func _on_round_timer_timeout() -> void:
 
 
 func _on_break_timer_timeout() -> void:
-	print("timed out")
 	round_state = ROUND_STATE
 	spawning_active = true
 	
