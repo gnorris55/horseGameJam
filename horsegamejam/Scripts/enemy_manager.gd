@@ -131,7 +131,11 @@ func _process(delta: float) -> void:
 	else:
 		time_left_break.text = "break time left: " + str(break_timer.time_left) 
 	
+	
+
 	print(round_state)
+	
+	
 func enemy_drop(position: Vector2):
 	
 	num_enemies -= 1

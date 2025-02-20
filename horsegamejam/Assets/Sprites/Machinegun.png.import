@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oaa2n7luja0i"
-path="res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"
+uid="uid://b3xcwiheg1e8i"
+path="res://.godot/imported/Machinegun.png-5cf3c97a98498a8463fd491abf0ed586.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Machete.png"
-dest_files=["res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"]
+source_file="res://Assets/Sprites/Machinegun.png"
+dest_files=["res://.godot/imported/Machinegun.png-5cf3c97a98498a8463fd491abf0ed586.ctex"]
 
 [params]
 

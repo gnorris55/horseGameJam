@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oaa2n7luja0i"
-path="res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"
+uid="uid://cayfou83yulnb"
+path="res://.godot/imported/Carrot.png-3025be9deb629630401e7a6aee370deb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Machete.png"
-dest_files=["res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"]
+source_file="res://Assets/Sprites/Carrot.png"
+dest_files=["res://.godot/imported/Carrot.png-3025be9deb629630401e7a6aee370deb.ctex"]
 
 [params]
 

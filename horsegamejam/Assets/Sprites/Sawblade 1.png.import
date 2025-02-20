@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oaa2n7luja0i"
-path="res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"
+uid="uid://bc1jihxe61fm8"
+path="res://.godot/imported/Sawblade 1.png-b5df67a29944cec2acdd8e647ad30a4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Machete.png"
-dest_files=["res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"]
+source_file="res://Assets/Sprites/Sawblade 1.png"
+dest_files=["res://.godot/imported/Sawblade 1.png-b5df67a29944cec2acdd8e647ad30a4e.ctex"]
 
 [params]
 

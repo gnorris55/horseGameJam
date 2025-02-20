@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oaa2n7luja0i"
-path="res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"
+uid="uid://dn1hpclx86xfm"
+path="res://.godot/imported/Horse_UI.png-dd0c4dc938dbff03d32377b6ea96ec85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Machete.png"
-dest_files=["res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"]
+source_file="res://Assets/Sprites/Horse_UI.png"
+dest_files=["res://.godot/imported/Horse_UI.png-dd0c4dc938dbff03d32377b6ea96ec85.ctex"]
 
 [params]
 
