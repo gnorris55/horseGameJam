@@ -20,15 +20,14 @@ const BREAK_STATE = 2
 @onready var round_timer: Timer = $roundTimer
 @onready var break_timer: Timer = $breakTimer
 
-
 var enemies = [enemy]
 
-var drop_probs = [0.5, 0.75]
+var drop_probs = [0.75, 0.85]
 
 var total_time = 0.0
 var accumulated_time = 0.0
 var spawn_rate = 3.0
-var spawn_radius = 1500
+var spawn_radius = 2500
 
 var current_round = 1
 var spawning_active = true
@@ -122,14 +121,15 @@ func _process(delta: float) -> void:
 			'''
 			accumulated_time -= spawn_rate
 			
-		time_left_round.text = "round time left: " + str(round_timer.time_left) 
+		time_left_round.text = "round time left: " + str(snapped(round_timer.time_left, 0.1)) 
 		
 			
 		total_time += delta
 		accumulated_time += delta	
 		
-	else:
-		time_left_break.text = "break time left: " + str(break_timer.time_left) 
+	elif (round_state == BREAK_STATE):
+		#if (break_timer.time_left != null):
+		time_left_break.text = "break time left: " + str(snapped(break_timer.time_left, 0.1)) 
 	
 	
 	
@@ -150,8 +150,6 @@ func enemy_drop(position: Vector2):
 		curr_health.position = position
 		#enemy_instance.target_position = target_position
 		add_child(curr_health)
-		
-	#print(accumulated_time)
 
 
 func _on_round_timer_timeout() -> void:

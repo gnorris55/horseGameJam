@@ -199,7 +199,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 [node name="horseSpriteAnimated" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5n24l")
 
+[node name="immuneTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="weapons/mainWeapons/attack_cooldown" to="weapons/mainWeapons" method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="weapons/tailWeapons/weapon/weaponsArea2D" to="weapons/tailWeapons" method="_on_weapons_area_2d_area_entered"]
 [connection signal="area_entered" from="weapons/tailWeapons/weapon/weaponsArea2D2" to="weapons/tailWeapons" method="_on_weapons_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="immuneTimer" to="." method="_on_immune_timer_timeout"]

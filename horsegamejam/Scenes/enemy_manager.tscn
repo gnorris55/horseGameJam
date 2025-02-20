@@ -33,7 +33,7 @@ offset_left = 976.0
 offset_top = 153.0
 offset_right = 1067.0
 offset_bottom = 176.0
-text = "break timer"
+text = "break time left: "
 
 [node name="roundTimer" type="Timer" parent="."]
 wait_time = 15.0
