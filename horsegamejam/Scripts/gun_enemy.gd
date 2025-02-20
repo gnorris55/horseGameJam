@@ -31,7 +31,7 @@ func movement(delta: float):
 	if (len(horse) > 0):
 		target_position = horse[0].global_position
 		direction = (target_position - global_position).normalized()
-		
+		sprite_2d.global_rotation = direction.angle() + PI/2.0
 		global_position += speed*delta*direction
 
 func take_damage(damage, hit_back = false):
@@ -45,8 +45,10 @@ func take_damage(damage, hit_back = false):
 		enemy_manager.enemy_drop(global_position)
 		death_timer.start()
 		death_particles.emitting = true
+		health_bar.visible = false
 		sprite_2d.visible = false
 		area_2d.queue_free()
+		
 	elif (hit_back):
 		global_position = global_position - direction*200	
 

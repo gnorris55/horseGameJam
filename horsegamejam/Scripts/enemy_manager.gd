@@ -6,7 +6,7 @@ const healt_potion = preload("res://Scenes/health_potion.tscn")
 
 const enemy = preload("res://Scenes/base_enemy.tscn")
 const gun_enemy = preload("res://Scenes/gun_enemy.tscn")
-
+const tractor_enemy = preload("res://Scenes/tractor_enemy.tscn")
 const ROUND_STATE = 0
 const TRANSITION_STATE = 1
 const BREAK_STATE = 2
@@ -91,11 +91,8 @@ func _process(delta: float) -> void:
 	if (round_state == ROUND_STATE and spawning_active):
 	
 		if (accumulated_time >= spawn_rate):
-			#print("enemy should spawn")
-			#print(random_value)
-			
-			#var spawn_number = floor(log(0.1*total_time + 1)) + 1
-			var spawn_number = floor(log(0.1*total_time + 1)) + 2 + floor(0.1*total_time)
+		
+			var spawn_number = floor(log(0.1*total_time + 1)) + 2 + floor(0.1*total_time/4)
 			num_enemies += spawn_number
 			#print(spawn_number)
 			
@@ -108,18 +105,17 @@ func _process(delta: float) -> void:
 				var new_instance = enemies[enemy_spawn_index].instantiate()
 				#var new_instance = enemy_arr[3].instantiate()
 				initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
-			
+		
 			if (total_time > 10 and enemies.size() < 2):
 				enemies.append(gun_enemy)
 				spawn_rareness += 4
 				#print("adding slow enemy")
 				#print(enemies)
 				
-			'''
 			if (total_time > 15 and enemies.size() < 3):
 				spawn_rareness += 4
-				enemies.append(fast_enemy)
-			
+				enemies.append(tractor_enemy)
+			'''	
 			if (total_time > 20 and enemies.size() < 4):
 				spawn_rareness += 3
 				enemies.append(teleport_enemy)

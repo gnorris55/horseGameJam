@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0wa58dx5kigj"]
 
 [ext_resource type="Script" path="res://Scripts/gun_enemy.gd" id="1_xelk1"]
-[ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="2_oymxs"]
+[ext_resource type="Texture2D" uid="uid://dg67cbjc063v7" path="res://Assets/Sprites/assetsStage2/Farmer 2.png" id="2_v6m72"]
 
 [sub_resource type="Curve" id="Curve_w7pci"]
 _data = [Vector2(0.0674157, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.859551, 0.175824), 0.0, 0.0, 0, 0]
@@ -20,7 +20,9 @@ bg_color = Color(1, 0, 0, 1)
 script = ExtResource("1_xelk1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_oymxs")
+rotation = 1.5708
+texture = ExtResource("2_v6m72")
+offset = Vector2(0, -9)
 
 [node name="deathParticles" type="CPUParticles2D" parent="."]
 emitting = false

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdw7332ecbb6"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_bullet.gd" id="1_2sprp"]
-[ext_resource type="Texture2D" uid="uid://c6ag63hkrl2ky" path="res://Assets/Sprites/bullet.png" id="2_qdqmd"]
+[ext_resource type="Texture2D" uid="uid://c2opso6xq08lo" path="res://Assets/Sprites/assetsStage2/Arrow.png" id="2_e38gr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pkbtr"]
 radius = 4.0
@@ -20,6 +20,7 @@ autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_qdqmd")
+rotation = 0.785398
+texture = ExtResource("2_e38gr")
 
 [connection signal="timeout" from="BulletLife" to="." method="_on_bullet_life_timeout"]
