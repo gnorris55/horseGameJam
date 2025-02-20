@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b2n6qjgu5xgty"]
 
 [ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_jhv1h"]
-[ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="2_8no2y"]
+[ext_resource type="Texture2D" uid="uid://7c8ebgwxdsr4" path="res://Assets/Sprites/assetsStage2/Farmer 1.png" id="2_l76w2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjq2d"]
 radius = 23.0
@@ -20,7 +20,10 @@ bg_color = Color(1, 0, 0, 1)
 script = ExtResource("1_jhv1h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8no2y")
+position = Vector2(0, 1)
+rotation = 1.5708
+texture = ExtResource("2_l76w2")
+offset = Vector2(0, -9)
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemyArea2D"]]
 

@@ -3,6 +3,7 @@ extends Node2D
 @onready var health_bar: ProgressBar = $playerUI/healthBar
 @onready var stamina_bar: ProgressBar = $playerUI/staminaBar
 @onready var currency_label: Label = $playerUI/currency
+@onready var immune_timer: Timer = $immuneTimer
 
 @export var health = 50
 @export var stamina = 50
@@ -26,22 +27,22 @@ func _ready() -> void:
 	$horseSpriteAnimated.play()
 	
 	
-func take_damage(damage):
+func take_damage(damage, direction):
 	if (health > 0):
 		health -= damage
+		global_position += direction*20
 	
 	
 	if (health <= 0):
-		print("game over")
-	
-	print("health lvl: " + str(health))
+		get_parent().game_over()
+
 	health_bar.value = health
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
+var immune = false
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carrot"):
 		area.get_parent().queue_free()
@@ -51,9 +52,16 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		area.get_parent().queue_free()
 		health += 20
 		health_bar.value = health
-	elif area.is_in_group("enemyArea2D"):
-		take_damage(20)
+	elif area.is_in_group("enemyArea2D") and !immune:
+		take_damage(20, area.get_parent().direction)
+		immune_timer.start()
+		immune = true
+		
 	elif area.is_in_group("enemyBullet"):
-		take_damage(1)
+		take_damage(1, area.get_parent().direction)
 		area.get_parent().queue_free()
 	
+
+
+func _on_immune_timer_timeout() -> void:
+	immune = false

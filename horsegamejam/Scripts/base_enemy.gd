@@ -27,7 +27,7 @@ func movement(delta: float):
 	if (len(horse) > 0):
 		var target_postion = horse[0].global_position
 		direction = (target_postion - global_position).normalized()
-		
+		sprite_2d.global_rotation = direction.angle() + PI/2.0
 		global_position += speed*delta*direction
 
 func take_damage(damage, hit_back = false):

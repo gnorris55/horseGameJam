@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8b4u6dilkc35"]
+[gd_scene load_steps=3 format=3 uid="uid://c8b4u6dilkc35"]
+
+[ext_resource type="Texture2D" uid="uid://fuk4n61kw6lq" path="res://Assets/Sprites/assetsStage2/Carrot.png" id="1_61aw0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xppo4"]
 
 [node name="Carrot" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_61aw0")
 
 [node name="Area2D" type="Area2D" parent="." groups=["carrot"]]
 
