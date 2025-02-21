@@ -1,18 +1,65 @@
-[gd_scene load_steps=13 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=26 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
 [ext_resource type="Script" path="res://Scripts/main_weapons.gd" id="2_v3x75"]
-[ext_resource type="Texture2D" uid="uid://do6l4v4uime6" path="res://Assets/Sprites/TestSprites/eraser.png" id="3_mx00m"]
 [ext_resource type="Script" path="res://Scripts/movement.gd" id="4_k8850"]
+[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/Machete.png" id="4_rr0rv"]
+[ext_resource type="Texture2D" uid="uid://c0equ3g7cdpyl" path="res://Assets/Sprites/Chainsaw.png" id="5_qtfgl"]
+[ext_resource type="Texture2D" uid="uid://c38kcrbpkhkf0" path="res://Assets/Sprites/Sawblade 2.png" id="6_oide1"]
+[ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="6_xb4is"]
+[ext_resource type="Texture2D" uid="uid://beb47wna515g0" path="res://Assets/Sprites/Horse.png" id="7_tkv7t"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ufg15"]
-radius = 34.3657
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_al8qo"]
+radius = 5.0
+height = 33.8519
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ysoy"]
+atlas = ExtResource("5_qtfgl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep547"]
+atlas = ExtResource("4_rr0rv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pefsq"]
+atlas = ExtResource("6_oide1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wkb52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ysoy")
+}],
+"loop": true,
+"name": &"chainsaw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep547")
+}],
+"loop": true,
+"name": &"machete",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pefsq")
+}],
+"loop": true,
+"name": &"sawBlade",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_abqda"]
+radius = 17.037
 
 [sub_resource type="PrismMesh" id="PrismMesh_no186"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_phyna"]
-radius = 81.0247
+radius = 23.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22p5n"]
 bg_color = Color(1, 0, 0, 0.47451)
@@ -26,6 +73,35 @@ bg_color = Color(0, 0.6, 0, 0.482353)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avs6o"]
 bg_color = Color(0, 1, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_atnxk"]
+atlas = ExtResource("7_tkv7t")
+region = Rect2(0, 0, 21, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggt0n"]
+atlas = ExtResource("7_tkv7t")
+region = Rect2(21, 0, 21, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8ovv"]
+atlas = ExtResource("7_tkv7t")
+region = Rect2(42, 0, 21, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5n24l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atnxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggt0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8ovv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Horse" type="Node2D" groups=["horse"]]
 script = ExtResource("1_nlkdp")
 
@@ -38,37 +114,52 @@ script = ExtResource("2_v3x75")
 autostart = true
 
 [node name="tailWeapons" type="Node2D" parent="weapons"]
-position = Vector2(-18, 63)
+position = Vector2(0, 18)
 script = ExtResource("2_gfgdi")
 
 [node name="weapon" type="Node2D" parent="weapons/tailWeapons"]
-position = Vector2(229, 0)
+position = Vector2(59, 20)
+scale = Vector2(1.35, 1.35)
 
-[node name="Sprite2D" type="Sprite2D" parent="weapons/tailWeapons/weapon"]
-visible = false
-texture = ExtResource("3_mx00m")
+[node name="weaponsArea2D" type="Area2D" parent="weapons/tailWeapons/weapon" groups=["tailWeapon"]]
+position = Vector2(8, 0)
 
-[node name="Area2D" type="Area2D" parent="weapons/tailWeapons/weapon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapons/tailWeapons/weapon/weaponsArea2D"]
+position = Vector2(7.55555, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_al8qo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="weapons/tailWeapons/weapon/Area2D"]
-position = Vector2(-12, -2)
-shape = SubResource("CircleShape2D_ufg15")
+[node name="weaponSprites" type="AnimatedSprite2D" parent="weapons/tailWeapons/weapon"]
+position = Vector2(15.5556, 0)
+rotation = 0.785398
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_wkb52")
+animation = &"sawBlade"
+
+[node name="weaponsArea2D2" type="Area2D" parent="weapons/tailWeapons/weapon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapons/tailWeapons/weapon/weaponsArea2D2" groups=["tailWeapon"]]
+position = Vector2(11.8519, 1.48148)
+shape = SubResource("CircleShape2D_abqda")
 
 [node name="tail" type="Line2D" parent="weapons/tailWeapons"]
 position = Vector2(229, 0)
-default_color = Color(0.688766, 0.485597, 0.252541, 1)
+width = 3.0
+default_color = Color(0.407106, 0.276338, 0.124037, 1)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="weapons"]
+visible = false
 z_index = 2
 rotation = 3.14159
-scale = Vector2(100, 100)
+scale = Vector2(16.6613, 16.6613)
 mesh = SubResource("PrismMesh_no186")
 
 [node name="movement" type="Node2D" parent="."]
 script = ExtResource("4_k8850")
 
 [node name="horseSprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_mx00m")
+visible = false
+texture = ExtResource("6_xb4is")
 
 [node name="Area2D" type="Area2D" parent="." groups=["horseArea2D"]]
 
@@ -98,6 +189,21 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_avs6o")
 fill_mode = 1
 show_percentage = false
 
+[node name="currency" type="Label" parent="playerUI"]
+offset_left = 707.0
+offset_top = 62.0
+offset_right = 747.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="horseSpriteAnimated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5n24l")
+
+[node name="immuneTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="weapons/mainWeapons/attack_cooldown" to="weapons/mainWeapons" method="_on_attack_cooldown_timeout"]
-[connection signal="area_entered" from="weapons/tailWeapons/weapon/Area2D" to="weapons/tailWeapons" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="weapons/tailWeapons/weapon/weaponsArea2D" to="weapons/tailWeapons" method="_on_weapons_area_2d_area_entered"]
+[connection signal="area_entered" from="weapons/tailWeapons/weapon/weaponsArea2D2" to="weapons/tailWeapons" method="_on_weapons_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="immuneTimer" to="." method="_on_immune_timer_timeout"]

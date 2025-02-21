@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpbxac0lkbxr0"]
+
+[ext_resource type="Texture2D" uid="uid://gmmj5fo88ljs" path="res://Assets/Sprites/healthPotion..png" id="1_lvi2g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rtvkc"]
+radius = 9.0
+
+[node name="HealthPotion" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_lvi2g")
+
+[node name="Area2D" type="Area2D" parent="." groups=["healthPotion"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rtvkc")

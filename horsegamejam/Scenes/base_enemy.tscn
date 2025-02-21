@@ -1,20 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2n6qjgu5xgty"]
+[gd_scene load_steps=7 format=3 uid="uid://b2n6qjgu5xgty"]
 
 [ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_jhv1h"]
-[ext_resource type="Texture2D" uid="uid://cjg5mvvmso3lk" path="res://Assets/Sprites/TestSprites/scissor.png" id="2_vbg6m"]
+[ext_resource type="Texture2D" uid="uid://7c8ebgwxdsr4" path="res://Assets/Sprites/assetsStage2/Farmer 1.png" id="2_l76w2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjq2d"]
-radius = 398.08
+radius = 23.0
 
 [sub_resource type="Curve" id="Curve_dnpaa"]
 _data = [Vector2(0.0674157, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.859551, 0.175824), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gbj3"]
+bg_color = Color(1, 0, 0, 0.47451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqk0c"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="baseEnemy" type="Node2D"]
 script = ExtResource("1_jhv1h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vbg6m")
+position = Vector2(0, 1)
+rotation = 1.5708
+texture = ExtResource("2_l76w2")
+offset = Vector2(0, -9)
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemyArea2D"]]
 
@@ -38,5 +47,16 @@ scale_amount_min = 20.0
 scale_amount_max = 20.0
 scale_amount_curve = SubResource("Curve_dnpaa")
 color = Color(1, 0, 0, 1)
+
+[node name="healthBar" type="ProgressBar" parent="."]
+offset_left = -26.0
+offset_top = -39.0
+offset_right = 26.0
+offset_bottom = -31.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7gbj3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uqk0c")
+value = 100.0
+fill_mode = 1
+show_percentage = false
 
 [connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]

@@ -4,3 +4,45 @@
 
 [node name="enemyMananager" type="Node2D" groups=["enemyManager"]]
 script = ExtResource("1_o8vb7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="roundNum" type="Label" parent="CanvasLayer"]
+offset_left = 973.0
+offset_top = 80.0
+offset_right = 1013.0
+offset_bottom = 103.0
+text = "round: 1"
+
+[node name="timeLeftRound" type="Label" parent="CanvasLayer"]
+offset_left = 974.0
+offset_top = 103.0
+offset_right = 1068.0
+offset_bottom = 126.0
+text = "round timer"
+
+[node name="numEnemiesLabel" type="Label" parent="CanvasLayer"]
+offset_left = 974.0
+offset_top = 125.0
+offset_right = 1070.0
+offset_bottom = 148.0
+text = "enemies left"
+
+[node name="timeLeftBreak" type="Label" parent="CanvasLayer"]
+offset_left = 976.0
+offset_top = 153.0
+offset_right = 1067.0
+offset_bottom = 176.0
+text = "break time left: "
+
+[node name="roundTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="breakTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="roundTimer" to="." method="_on_round_timer_timeout"]
+[connection signal="timeout" from="breakTimer" to="." method="_on_break_timer_timeout"]
