@@ -2,7 +2,7 @@ extends Node2D
 
 var direction = Vector2.ZERO
 
-var speed = 250
+var speed = 300
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

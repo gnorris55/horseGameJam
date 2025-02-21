@@ -21,6 +21,10 @@ script = ExtResource("1_483gp")
 
 [node name="enemyMananager" parent="." instance=ExtResource("5_llilm")]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PimpingMenu" parent="CanvasLayer" instance=ExtResource("5_vvtll")]
+
 [node name="gameOverMenu" type="CanvasLayer" parent="."]
 
 [node name="gameOverText" type="Label" parent="gameOverMenu"]
@@ -37,7 +41,5 @@ offset_top = 265.0
 offset_right = 615.0
 offset_bottom = 296.0
 text = "RESTART"
-
-[node name="PimpingMenu" parent="gameOverMenu" instance=ExtResource("5_vvtll")]
 
 [connection signal="pressed" from="gameOverMenu/restartButton" to="." method="_on_restart_button_pressed"]

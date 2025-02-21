@@ -6,7 +6,7 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 @onready var health_bar: ProgressBar = $healthBar
 
-@export var speed = 100
+@export var speed = 130
 @export var health = 50
 
 var direction = Vector2.ZERO
@@ -33,7 +33,6 @@ func movement(delta: float):
 func take_damage(damage, hit_back = false):
 	health -= damage
 	health_bar.value = health
-	print(health)
 	#TODO: make the bounce back more realistic
 	
 	if (health <= 0 and health_bar.visible):

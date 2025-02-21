@@ -20,7 +20,7 @@ var center_point = Vector2(0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+
 	global_pimpbus.pimp_changed.connect(change_melee)
 	
 	tail.add_point(global_position)
@@ -34,7 +34,11 @@ func _ready() -> void:
 
 # connect to signal from UI
 func change_melee(slot: String, type: String):
-	if (slot == "TailSlot"):
+	
+	print("slot: " + str(slot))
+	print("type: " + str(type))
+	
+	if (slot == "BodySlot"):
 		
 		if type == "machete":
 			tail.visible = true
@@ -43,11 +47,9 @@ func change_melee(slot: String, type: String):
 			tail.visible = true
 			change_weapon_state(true, true, false, "chainsaw", 40, 2)
 		elif type == "sawblade":
+			print("saw")
 			tail.visible = true
 			change_weapon_state(true, false, true, "sawBlade", 30, 3.5)
-		
-		
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -84,7 +86,6 @@ func _process(delta: float) -> void:
 func inputs():
 	if Input.is_action_just_pressed("changeMelee"):
 		weapon_state = (weapon_state + 1) % 4
-		print(weapon_state)
 		
 		if weapon_state == 0:
 			tail.visible = false
@@ -108,12 +109,10 @@ func change_weapon_state(visible, monitoring1, monitoring2, animation, damage, s
 	speed_scalar = speed
 
 func _on_weapons_area_2d_area_entered(area: Area2D) -> void:
-	print("body entered")
 	if area.is_in_group("enemyArea2D"):
 		area.get_parent().take_damage(weapon_damage, true)	
 		
 
 func _on_weapons_area_2d_2_area_entered(area: Area2D) -> void:
-	print("body entered")
 	if area.is_in_group("enemyArea2D"):
 		area.get_parent().take_damage(weapon_damage, true)	

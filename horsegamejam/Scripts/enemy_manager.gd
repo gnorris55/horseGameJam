@@ -91,7 +91,7 @@ func _process(delta: float) -> void:
 	
 		if (accumulated_time >= spawn_rate):
 		
-			var spawn_number = floor(log(0.1*total_time + 1)) + 2 + floor(0.1*total_time/4)
+			var spawn_number = floor(log(0.1*total_time + 1)) + 2 + floor(0.1*total_time/3)
 			num_enemies += spawn_number
 			#print(spawn_number)
 			
@@ -111,7 +111,7 @@ func _process(delta: float) -> void:
 				#print("adding slow enemy")
 				#print(enemies)
 				
-			if (total_time > 15 and enemies.size() < 3):
+			if (total_time > 25 and enemies.size() < 3):
 				spawn_rareness += 4
 				enemies.append(tractor_enemy)
 			'''	
@@ -139,7 +139,6 @@ func enemy_drop(position: Vector2):
 	
 	randomize()
 	var drop = randf()
-	print(drop)
 	if (drop < drop_probs[0]):	
 		var curr_carrot = carrot.instantiate()
 		curr_carrot.position = position

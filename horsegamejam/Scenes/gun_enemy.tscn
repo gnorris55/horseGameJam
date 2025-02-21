@@ -47,7 +47,7 @@ shape = SubResource("CircleShape2D_w5fw7")
 [node name="deathTimer" type="Timer" parent="."]
 
 [node name="shootTimer" type="Timer" parent="." groups=["enemyBullet"]]
-wait_time = 5.0
+wait_time = 2.0
 autostart = true
 
 [node name="healthBar" type="ProgressBar" parent="."]
