@@ -8,7 +8,7 @@ const ENEMY_BULLET = preload("res://Scenes/enemy_bullet.tscn")
 @onready var area_2d: Area2D = $Area2D
 @onready var health_bar: ProgressBar = $healthBar
 
-@export var speed = 50
+@export var speed = 70
 @export var health = 50
 
 var direction = Vector2.ZERO
@@ -70,7 +70,4 @@ func _on_shoot_timer_timeout() -> void:
 	var distance_from_horse = abs((target_position - global_position).length())
 	if distance_from_horse > shooting_radius[0] and distance_from_horse < shooting_radius[1]:
 		shoot()
-		print("should shoot")
-		
-	pass # Replace with function body.
 	

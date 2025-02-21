@@ -7,7 +7,7 @@ extends Node2D
 @onready var movement: Node2D = $movement
 @onready var movement_sprite: AnimatedSprite2D = $movementSprite
 
-@export var health = 50
+@export var health = 100
 @export var stamina = 50
 var movement_state = 0
 
@@ -63,7 +63,6 @@ func take_damage(damage, direction):
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("changeMovement"):
 		movement_state = (movement_state + 1) % 4
-		print(movement)
 		
 		if movement_state == 0:
 			movement_sprite.play()
@@ -89,7 +88,7 @@ var immune = false
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carrot"):
 		area.get_parent().queue_free()
-		money += 20
+		money += 5
 		currency_label.text = "carrots: " + str(money)
 	elif area.is_in_group("healthPotion"):
 		area.get_parent().queue_free()
@@ -101,7 +100,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		immune = true
 		
 	elif area.is_in_group("enemyBullet"):
-		take_damage(1, area.get_parent().direction)
+		take_damage(10, area.get_parent().direction)
 		area.get_parent().queue_free()
 	
 
