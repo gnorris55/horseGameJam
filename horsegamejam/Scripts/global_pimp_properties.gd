@@ -1,10 +1,16 @@
 extends Node
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+signal pimp_changed(slot: String, pimp: String)
+# Slot Names:
+# HornSlot, BodySlot, MinifridgeSlot, TailSlot, HoovesSlot
+# ~~~~~~~~~~~
+# Pimp Names:
+# lazer, shotgun, machinegun
+# machete, chainsaw, sawblade
+# regular, gold, platinum
+# armor1, armor2, armor3, armor4, armor5
+# wheels, sawblades, fans
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func change_pimp(pimpSlot: String, pimp: String) -> void:
+	emit_signal("pimp_changed", pimpSlot, pimp)
+	

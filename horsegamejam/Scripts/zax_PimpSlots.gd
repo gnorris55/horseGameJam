@@ -1,12 +1,25 @@
 extends Button
 
+signal close_all_except(pimpSlot: Node)
+
+var pimps
+var unlocked = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_node("Slots").visible = false
-	pass # Replace with function body.
+	pressed.connect(_button_pressed)
+	get_node("Pimps").visible = false
+	pimps = get_node("Pimps").get_children()
+	var i = 0
+	for pimp in pimps:
+		pimp.pressed.connect(_pimp_pressed.bind(pimp.name))
+		i += 1
 
+func _button_pressed() -> void:
+	get_node("Pimps").visible = not get_node("Pimps").visible
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _pimp_pressed(name: String) -> void:
+	emit_signal("close_all_except", self)
+	global_pimpbus.change_pimp(self.name, name)
+	print(name)
+	#if 
