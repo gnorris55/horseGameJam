@@ -9,7 +9,6 @@ extends Node2D
 @onready var weapons_area_2d: Area2D = $weapon/weaponsArea2D
 @onready var weapons_area_2d_2: Area2D = $weapon/weaponsArea2D2
 
-
 var radius = 100
 var direction = -1
 var t = PI / 2
@@ -93,8 +92,6 @@ func _on_weapons_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemyArea2D"):
 		area.get_parent().take_damage(weapon_damage, true)	
 		
-	
-
 
 func _on_weapons_area_2d_2_area_entered(area: Area2D) -> void:
 	print("body entered")

@@ -45,7 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource("3_3655a")
 
-[node name="HeadSlot" type="Button" parent="PimpSlots"]
+[node name="HornSlot" type="Button" parent="PimpSlots"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.168
@@ -58,12 +58,12 @@ offset_right = 0.522034
 offset_bottom = 0.272995
 script = ExtResource("4_w41pa")
 
-[node name="Pimps" type="Control" parent="PimpSlots/HeadSlot"]
+[node name="Pimps" type="Control" parent="PimpSlots/HornSlot"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="lazer" type="Button" parent="PimpSlots/HeadSlot/Pimps"]
+[node name="lazer" type="Button" parent="PimpSlots/HornSlot/Pimps"]
 layout_mode = 2
 anchor_left = -3.43437
 anchor_top = -0.228125
@@ -75,12 +75,12 @@ flat = true
 metadata/Unlocked = false
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="PimpSlots/HeadSlot/Pimps/lazer"]
+[node name="Sprite2D" type="Sprite2D" parent="PimpSlots/HornSlot/Pimps/lazer"]
 position = Vector2(50, 87.5)
 scale = Vector2(3.33203, 2.74609)
 texture = ExtResource("5_edsyg")
 
-[node name="shotgun" type="Button" parent="PimpSlots/HeadSlot/Pimps"]
+[node name="shotgun" type="Button" parent="PimpSlots/HornSlot/Pimps"]
 layout_mode = 2
 offset_left = 56.375
 offset_top = -40.375
@@ -89,7 +89,7 @@ offset_bottom = 137.625
 text = "Charlie brown"
 metadata/Unlocked = false
 
-[node name="machinegun" type="Button" parent="PimpSlots/HeadSlot/Pimps"]
+[node name="machinegun" type="Button" parent="PimpSlots/HornSlot/Pimps"]
 layout_mode = 2
 offset_left = -178.0
 offset_top = 131.5
