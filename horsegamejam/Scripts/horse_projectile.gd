@@ -24,7 +24,6 @@ func set_type(tempname,advance):
 	rotation_offset = PI/4
 	#elif name == "laser":
 		#$Area2D/laser.disabled = false
-	print("bullet,angle",vel.angle())
 	rotation = vel.angle() + rotation_offset
 	position += vel*advance*$AnimatedSprite2D.scale.x
 	
@@ -35,7 +34,6 @@ func _on_attack_timer_timeout() -> void:
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemyArea2D"):
-		print("Enemy enterd by horse projectile")
 		area.get_parent().take_damage(damage)	
 		if wname != "laser":
 			queue_free()

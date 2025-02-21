@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6w35ixf7v74j" path="res://Assets/Sprites/laser.png" id="3_d2thw"]
 [ext_resource type="Texture2D" uid="uid://b3xcwiheg1e8i" path="res://Assets/Sprites/Machinegun.png" id="4_54oyr"]
 [ext_resource type="Script" path="res://Scripts/movement.gd" id="4_k8850"]
-[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/Machete.png" id="4_rr0rv"]
+[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/machete.png" id="4_rr0rv"]
 [ext_resource type="Texture2D" uid="uid://y53eomoyw8p7" path="res://Assets/Sprites/Shotgun.png" id="5_il1in"]
 [ext_resource type="Texture2D" uid="uid://c0equ3g7cdpyl" path="res://Assets/Sprites/Chainsaw.png" id="5_qtfgl"]
 [ext_resource type="Texture2D" uid="uid://c38kcrbpkhkf0" path="res://Assets/Sprites/Sawblade 2.png" id="6_oide1"]

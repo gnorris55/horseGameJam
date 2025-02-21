@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		if horse_node.main_weapon_state >= attack_names.size():
 			horse_node.main_weapon_state = 0
 	attack_type = attack_names[horse_node.main_weapon_state]
-	print(attack_type)
+	#print(attack_type)
 	
 	if attack_type == "empty":#ugly, could be improved if we have a weapon change function
 		$weaponSprites.visible = false
@@ -77,7 +77,6 @@ func _process(delta: float) -> void:
 				#var vec = Vector2(get_global_mouse_position().x - horse_node.position.x,get_global_mouse_position().y - horse_node.position.y)
 				#l.vel = vec.limit_length(1)
 				#l.length = vec.length()
-				#print(l.get_node("attack_timer").wait_time)
 			
 			$attack_cooldown.wait_time = GUNS[attack_type]["cooldown"]
 			$attack_cooldown.start()

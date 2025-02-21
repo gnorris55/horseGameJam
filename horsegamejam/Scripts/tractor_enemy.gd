@@ -39,7 +39,6 @@ func movement(delta: float):
 func take_damage(damage, hit_back = false):
 	health -= damage
 	health_bar.value = health
-	print(health)
 	#TODO: make the bounce back more realistic
 	
 	if (health <= 0 and health_bar.visible):
