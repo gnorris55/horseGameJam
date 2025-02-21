@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oaa2n7luja0i"
-path="res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"
+uid="uid://b0kouqw8snjlt"
+path="res://.godot/imported/Upgrade box.png-2f162ac9b60b27658241a27a696328f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Machete.png"
-dest_files=["res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"]
+source_file="res://Assets/Sprites/Upgrade box.png"
+dest_files=["res://.godot/imported/Upgrade box.png-2f162ac9b60b27658241a27a696328f2.ctex"]
 
 [params]
 

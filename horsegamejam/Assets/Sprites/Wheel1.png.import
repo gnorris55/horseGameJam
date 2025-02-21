@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oaa2n7luja0i"
-path="res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"
+uid="uid://c4lmhjgjb2n4l"
+path="res://.godot/imported/Wheel1.png-38a22010f295b2a6319b7e2a9c103f3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Machete.png"
-dest_files=["res://.godot/imported/Machete.png-550ff4a611a5072f6a2a373c9d011370.ctex"]
+source_file="res://Assets/Sprites/Wheel1.png"
+dest_files=["res://.godot/imported/Wheel1.png-38a22010f295b2a6319b7e2a9c103f3f.ctex"]
 
 [params]
 

@@ -4,9 +4,12 @@ extends Node2D
 @onready var stamina_bar: ProgressBar = $playerUI/staminaBar
 @onready var currency_label: Label = $playerUI/currency
 @onready var immune_timer: Timer = $immuneTimer
+@onready var movement: Node2D = $movement
+@onready var movement_sprite: AnimatedSprite2D = $movementSprite
 
 @export var health = 50
 @export var stamina = 50
+var movement_state = 0
 
 var main_weapon_state = 0
 var tail_weapon_state = 0
@@ -40,7 +43,20 @@ func take_damage(damage, direction):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("changeMovement"):
+		movement_state = (movement_state + 1) % 3
+		print(movement)
+		
+		if movement_state == 0:
+			movement_sprite.play()
+			movement_sprite.visible = false
+		elif movement_state == 1:
+			movement_sprite.play("wheels")
+			movement_sprite.visible = true
+		elif movement_state == 2:
+			movement_sprite.play("fans")
+			movement_sprite.visible = true
+	
 
 var immune = false
 func _on_area_2d_area_entered(area: Area2D) -> void:

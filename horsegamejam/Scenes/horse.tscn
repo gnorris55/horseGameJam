@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=39 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://c38kcrbpkhkf0" path="res://Assets/Sprites/Sawblade 2.png" id="6_oide1"]
 [ext_resource type="Texture2D" uid="uid://d1nbilnkqu736" path="res://Assets/Sprites/horseBox.png" id="6_xb4is"]
 [ext_resource type="Texture2D" uid="uid://beb47wna515g0" path="res://Assets/Sprites/Horse.png" id="7_tkv7t"]
+[ext_resource type="Texture2D" uid="uid://bb4xe465dfujk" path="res://Assets/Sprites/Fan1.png" id="13_ufrrg"]
+[ext_resource type="Texture2D" uid="uid://dvykfjueer5yd" path="res://Assets/Sprites/Fan2.png" id="14_1830x"]
+[ext_resource type="Texture2D" uid="uid://c4lmhjgjb2n4l" path="res://Assets/Sprites/Wheel1.png" id="15_sxoma"]
+[ext_resource type="Texture2D" uid="uid://ddw8xufc1aw0c" path="res://Assets/Sprites/Wheel2.png" id="16_cxcfj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4moj0"]
 animations = [{
@@ -142,6 +146,47 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro847"]
+atlas = ExtResource("13_ufrrg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap68u"]
+atlas = ExtResource("14_1830x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf2wc"]
+atlas = ExtResource("15_sxoma")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c60kx"]
+atlas = ExtResource("16_cxcfj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sw0ms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro847")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap68u")
+}],
+"loop": true,
+"name": &"fans",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf2wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c60kx")
+}],
+"loop": true,
+"name": &"wheels",
+"speed": 5.0
+}]
+
 [node name="Horse" type="Node2D" groups=["horse"]]
 script = ExtResource("1_nlkdp")
 
@@ -245,6 +290,12 @@ sprite_frames = SubResource("SpriteFrames_5n24l")
 
 [node name="immuneTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="movementSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sw0ms")
+animation = &"fans"
+frame = 1
+frame_progress = 0.427463
 
 [connection signal="timeout" from="weapons/mainWeapons/attack_cooldown" to="weapons/mainWeapons" method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="weapons/tailWeapons/weapon/weaponsArea2D" to="weapons/tailWeapons" method="_on_weapons_area_2d_area_entered"]
