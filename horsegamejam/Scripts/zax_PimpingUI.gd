@@ -14,13 +14,14 @@ func _ready() -> void:
 	
 	# Getting all pimp slots.
 	pimpSlots = {
-		"head": get_node("PimpSlots/HeadSlot"),
+		"head": get_node("PimpSlots/HornSlot"),
 		"body": get_node("PimpSlots/BodySlot"),
 		"mini": get_node("PimpSlots/MinifridgeSlot"),
 		"tail": get_node("PimpSlots/TailSlot"),
 		"hooves": get_node("PimpSlots/HoovesSlot")
 	}
-	for pimpSlot in pimpSlots: pimpSlots[pimpSlot].close_all_except.connect(_close_all_except)
+	for pimpSlot in pimpSlots.keys():
+		pimpSlots[pimpSlot].close_all_except.connect(_close_all_except)
 	
 	# Getting all pimps within each pimp slot.
 	pimps = {
@@ -32,6 +33,7 @@ func _ready() -> void:
 	}
 	
 	_reset_pimping_menu()
+	global_pimpbus.pimp_changed.connect(AAA)
 
 func _reset_pimping_menu() -> void:
 	modulate = Color(1, 1, 1, 0.20)
@@ -60,7 +62,10 @@ func _signal_PimpingIcon_mouse_entered() -> void:
 
 func _close_all_except(except: Node) -> void:
 	for pimpSlot in pimpSlots.keys():
-		print(pimpSlot)
-		print(except)
+		#print(pimpSlot)
+		#print(except)
 		if pimpSlots[pimpSlot] != except:
 			pimpSlots[pimpSlot].get_node("Pimps").visible = false
+
+func AAA(a: String, b: String):
+	print(a, b)

@@ -17,9 +17,8 @@ func _ready() -> void:
 
 func _button_pressed() -> void:
 	get_node("Pimps").visible = not get_node("Pimps").visible
+	emit_signal("close_all_except", self)
 
 func _pimp_pressed(name: String) -> void:
-	emit_signal("close_all_except", self)
 	global_pimpbus.change_pimp(self.name, name)
-	print(name)
-	#if 
+	
