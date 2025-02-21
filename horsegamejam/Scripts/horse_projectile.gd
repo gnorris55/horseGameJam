@@ -17,11 +17,11 @@ func _process(delta: float) -> void:
 
 func set_type(name,advance):
 	$AnimatedSprite2D.play(name)
-	if name == "bullet":
-		$Area2D/bullet.disabled = false
-		rotation_offset = PI/4
-	elif name == "laser":
-		$Area2D/laser.disabled = false
+	#if name == "bullet":
+	$Area2D/bullet.disabled = false
+	rotation_offset = PI/4
+	#elif name == "laser":
+		#$Area2D/laser.disabled = false
 	print("bullet,angle",vel.angle())
 	rotation = vel.angle() + rotation_offset
 	position += vel*advance*$AnimatedSprite2D.scale.x

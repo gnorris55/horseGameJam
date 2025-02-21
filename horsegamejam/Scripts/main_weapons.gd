@@ -26,6 +26,7 @@ var countdown_finished = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#globalPimpProperties.pimp_changed.connect(change_weapon)
 	pass # Replace with function body.
 
 
@@ -81,7 +82,8 @@ func _process(delta: float) -> void:
 			$attack_cooldown.wait_time = GUNS[attack_type]["cooldown"]
 			$attack_cooldown.start()
 			countdown_finished = false
-
+#func change_weapon(slot: String, type: String):
+	#print(type)
 
 func _on_attack_cooldown_timeout() -> void:
 	countdown_finished = true

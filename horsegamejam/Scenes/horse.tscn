@@ -199,6 +199,7 @@ script = ExtResource("2_v3x75")
 autostart = true
 
 [node name="weaponSprites" type="AnimatedSprite2D" parent="weapons/mainWeapons"]
+z_index = 3
 sprite_frames = SubResource("SpriteFrames_4moj0")
 animation = &"empty"
 
