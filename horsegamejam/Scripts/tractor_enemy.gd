@@ -42,7 +42,7 @@ func take_damage(damage, hit_back = false):
 	print(health)
 	#TODO: make the bounce back more realistic
 	
-	if (health <= 0):
+	if (health <= 0 and health_bar.visible):
 		var enemy_manager = get_parent()
 		enemy_manager.enemy_drop(global_position)
 		death_timer.start()
@@ -50,6 +50,10 @@ func take_damage(damage, hit_back = false):
 		sprite_2d.visible = false
 		area_2d.queue_free()
 		health_bar.visible = false
+
+		$Polygon2D.queue_free()
+		
+		
 	elif (hit_back):
 		global_position = global_position - direction*20	
 

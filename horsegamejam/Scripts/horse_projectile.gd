@@ -4,6 +4,7 @@ var vel = Vector2(0,0)
 var length = 0
 var damage = 0
 var speed = 0
+var rotation_offset = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,9 +19,11 @@ func set_type(name,advance):
 	$AnimatedSprite2D.play(name)
 	if name == "bullet":
 		$Area2D/bullet.disabled = false
+		rotation_offset = PI/4
 	elif name == "laser":
 		$Area2D/laser.disabled = false
-	rotation = vel.angle()
+	print("bullet,angle",vel.angle())
+	rotation = vel.angle() + rotation_offset
 	position += vel*advance*$AnimatedSprite2D.scale.x
 	
 	

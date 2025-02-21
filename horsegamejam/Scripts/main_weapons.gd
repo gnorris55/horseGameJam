@@ -9,8 +9,8 @@ var rng = RandomNumberGenerator.new()
 @onready var main_scene = horse_node.get_parent()
 
 # offset needs to be half length bullet * scale of bullet animated sprite
-var attack_ind = 1
-const attack_names = ["laser","machine_gun","shotgun"]
+#var attack_ind = 1
+const attack_names = ["empty","laser","machine_gun","shotgun"]
 const GUNS = {
 	"laser":{"spread":0,"bullets":1,"damage":20,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":0},
 	"machine_gun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0},
@@ -31,12 +31,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("switch_attack"):
-		attack_ind +=1
-		if attack_ind >= attack_names.size():
-			attack_ind = 0
-		attack_type = attack_names[attack_ind]
-	if Input.is_action_pressed("attack") and horse_node.stamina >= GUNS[attack_type].stamina:
+		horse_node.main_weapon_state +=1
+		if horse_node.main_weapon_state >= attack_names.size():
+			horse_node.main_weapon_state = 0
+	attack_type = attack_names[horse_node.main_weapon_state]
+	print(attack_type)
+	
+	if attack_type == "empty":#ugly, could be improved if we have a weapon change function
+		$weaponSprites.visible = false
+	else:
+		$weaponSprites.visible = true
+		$weaponSprites.play(attack_type)
+	if attack_type!= "empty" and Input.is_action_pressed("attack") and horse_node.stamina >= GUNS[attack_type].stamina:
 		if countdown_finished == true:
 			#var i = 0
 			for i in GUNS[attack_type].bullets:
