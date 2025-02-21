@@ -24,17 +24,18 @@ func _process(delta: float) -> void:
 	
 func movement(delta: float):
 	# need to be able to get player position
-	var horse = get_tree().get_nodes_in_group("horse")
-	if (len(horse) > 0):
-		var target_postion = horse[0].global_position
-		var target_direction = (target_postion - global_position).normalized()
-		
-		if direction.angle_to(target_direction)>0:
-			direction = direction.rotated(ANGLUAR_SPEED *delta)
-		else:
-			direction = direction.rotated(-ANGLUAR_SPEED *delta)
-		rotation = direction.angle()
-		global_position += speed*delta*direction
+	if health_bar.visible:
+		var horse = get_tree().get_nodes_in_group("horse")
+		if (len(horse) > 0):
+			var target_postion = horse[0].global_position
+			var target_direction = (target_postion - global_position).normalized()
+			
+			if direction.angle_to(target_direction)>0:
+				direction = direction.rotated(ANGLUAR_SPEED *delta)
+			else:
+				direction = direction.rotated(-ANGLUAR_SPEED *delta)
+			rotation = direction.angle()
+			global_position += speed*delta*direction
 
 func take_damage(damage, hit_back = false):
 	health -= damage
