@@ -5,6 +5,7 @@ var length = 0
 var damage = 0
 var speed = 0
 var rotation_offset = 0
+var wname = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,8 +16,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += vel*speed*delta
 
-func set_type(name,advance):
-	$AnimatedSprite2D.play(name)
+func set_type(tempname,advance):
+	wname = tempname
+	$AnimatedSprite2D.play(wname)
 	#if name == "bullet":
 	$Area2D/bullet.disabled = false
 	rotation_offset = PI/4
@@ -27,6 +29,7 @@ func set_type(name,advance):
 	position += vel*advance*$AnimatedSprite2D.scale.x
 	
 	
+	
 func _on_attack_timer_timeout() -> void:
 	queue_free()
 	
@@ -34,6 +37,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemyArea2D"):
 		print("Enemy enterd by horse projectile")
 		area.get_parent().take_damage(damage)	
-		queue_free()
+		if wname != "laser":
+			queue_free()
 	elif area.is_in_group("enemyShieldArea"):
 		queue_free()

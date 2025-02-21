@@ -13,7 +13,7 @@ var rng = RandomNumberGenerator.new()
 const attack_names = ["empty","laser","machine_gun","shotgun"]
 const GUNS = {
 	"laser":{"spread":0,"bullets":1,"damage":20,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":0},
-	"machine_gun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0},
+	"machine_gun":{"spread":40,"bullets":10,"damage":100,"cooldown":0.005,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0},
 	"shotgun":{"spread":10,"bullets":10,"damage":3,"cooldown":0.5,"speed":700,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0}
 	}
 var countdown_finished = true
