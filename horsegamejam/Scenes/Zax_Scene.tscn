@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=3 uid="uid://s05nmmd5gvxd"]
+
+[ext_resource type="Script" path="res://Scripts/zax_PimpingUI.gd" id="1_vfhd3"]
+[ext_resource type="Texture2D" uid="uid://du7c6hl2i107h" path="res://Assets/Sprites/pimicon.png" id="2_srxq5"]
+[ext_resource type="Texture2D" uid="uid://tiy6qacvb8ml" path="res://Assets/Sprites/pimp-my-hide.png" id="3_3655a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mds6i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sqdh"]
+
+[node name="PimpingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vfhd3")
+
+[node name="PimpingIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.111
+anchor_bottom = 0.198
+offset_right = 0.127991
+offset_bottom = -0.304016
+texture = ExtResource("2_srxq5")
+
+[node name="PimpSlots" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -95.0001
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.32, 0.32)
+metadata/_edit_use_anchors_ = true
+
+[node name="PimpMyHidebg" type="TextureRect" parent="PimpSlots"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("3_3655a")
+
+[node name="HeadSlot" type="Button" parent="PimpSlots"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165563
+anchor_top = 0.102228
+anchor_right = 0.257332
+anchor_bottom = 0.23329
+offset_right = 3.05176e-05
+offset_bottom = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mds6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="Pimps" type="VBoxContainer" parent="PimpSlots/HeadSlot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.03093
+anchor_top = -0.78
+anchor_right = -0.0309278
+anchor_bottom = 3.53
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Lazer" type="Button" parent="PimpSlots/HeadSlot/Pimps"]
+layout_mode = 2
+text = "Lazer"
+
+[node name="Quantum" type="Button" parent="PimpSlots/HeadSlot/Pimps"]
+layout_mode = 2
+text = "Quantum"
+
+[node name="Rail" type="Button" parent="PimpSlots/HeadSlot/Pimps"]
+layout_mode = 2
+text = "Rail"
+
+[node name="BodySlot" type="Button" parent="PimpSlots"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.360691
+anchor_top = 0.286697
+anchor_right = 0.45246
+anchor_bottom = 0.417759
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2sqdh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Pimps" type="VBoxContainer" parent="PimpSlots/BodySlot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.12758
+anchor_top = -2.1875
+anchor_right = 0.0167525
+anchor_bottom = 2.1225
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Machine" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+layout_mode = 2
+text = "Machine Gun"
+
+[node name="Shotguns" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+layout_mode = 2
+text = "Shotguns"
+
+[node name="Cannons" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+layout_mode = 2
+text = "Cannons"
+
+[node name="Mines" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+layout_mode = 2
+text = "Mines"
+
+[connection signal="mouse_entered" from="PimpingIcon" to="." method="_signal_PimpingIcon_mouse_entered"]
+[connection signal="pressed" from="PimpSlots/HeadSlot" to="." method="_signal_HeadSlot_pressed"]
+[connection signal="pressed" from="PimpSlots/BodySlot" to="." method="_signal_HeadSlot_pressed"]
