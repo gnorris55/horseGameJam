@@ -6,7 +6,7 @@ const healt_potion = preload("res://Scenes/health_potion.tscn")
 
 const enemy = preload("res://Scenes/tractor_enemy.tscn")#preload("res://Scenes/base_enemy.tscn")
 const gun_enemy = preload("res://Scenes/gun_enemy.tscn")
-const tractor_enemy = preload("res://Scenes/tractor_enemy.tscn")
+const tractor_enemy = preload("res://Scenes/base_enemy.tscn")
 const ROUND_STATE = 0
 const TRANSITION_STATE = 1
 const BREAK_STATE = 2
