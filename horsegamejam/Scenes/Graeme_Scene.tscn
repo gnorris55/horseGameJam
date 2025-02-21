@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://casp6m3llwv6b"]
+[gd_scene load_steps=7 format=3 uid="uid://casp6m3llwv6b"]
 
 [ext_resource type="PackedScene" uid="uid://dppjjkw15migb" path="res://Scenes/horse.tscn" id="1_428cj"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_483gp"]
 [ext_resource type="PackedScene" uid="uid://dwqw0tx4016op" path="res://Scenes/map.tscn" id="4_4l65s"]
 [ext_resource type="PackedScene" uid="uid://npctohpgyyko" path="res://Scenes/enemy_manager.tscn" id="5_llilm"]
+[ext_resource type="PackedScene" uid="uid://s05nmmd5gvxd" path="res://Scenes/Zax_Scene.tscn" id="5_vvtll"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p46xl"]
 font_size = 50
@@ -15,7 +16,6 @@ script = ExtResource("1_483gp")
 [node name="Horse" parent="." instance=ExtResource("1_428cj")]
 
 [node name="Camera2D" type="Camera2D" parent="Horse"]
-zoom = Vector2(1.5, 1.5)
 
 [node name="Map" parent="." instance=ExtResource("4_4l65s")]
 
@@ -37,5 +37,7 @@ offset_top = 265.0
 offset_right = 615.0
 offset_bottom = 296.0
 text = "RESTART"
+
+[node name="PimpingMenu" parent="gameOverMenu" instance=ExtResource("5_vvtll")]
 
 [connection signal="pressed" from="gameOverMenu/restartButton" to="." method="_on_restart_button_pressed"]

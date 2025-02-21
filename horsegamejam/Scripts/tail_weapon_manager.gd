@@ -21,6 +21,8 @@ var center_point = Vector2(0, 0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	global_pimpbus.pimp_changed.connect(change_melee)
+	
 	tail.add_point(global_position)
 	tail.add_point(weapon.global_position)
 	
@@ -29,6 +31,23 @@ func _ready() -> void:
 	weapons_area_2d_2.monitoring = false
 	weapon.visible = false
 	tail.visible = false
+
+# connect to signal from UI
+func change_melee(slot: String, type: String):
+	if (slot == "TailSlot"):
+		
+		if type == "machete":
+			tail.visible = true
+			change_weapon_state(true, true, false, "machete", 20, 3)
+		elif type == "chainsaw":
+			tail.visible = true
+			change_weapon_state(true, true, false, "chainsaw", 40, 2)
+		elif type == "sawblade":
+			tail.visible = true
+			change_weapon_state(true, false, true, "sawBlade", 30, 3.5)
+		
+		
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,6 +79,7 @@ func _process(delta: float) -> void:
 	tail.points[1] = tail.to_local(weapon.global_position)
 
 	inputs()
+
 
 func inputs():
 	if Input.is_action_just_pressed("changeMelee"):

@@ -40,7 +40,7 @@ func take_damage(damage, hit_back = false):
 	health_bar.value = health
 
 	
-	if (health <= 0):
+	if (health <= 0 and health_bar.visible):
 		var enemy_manager = get_parent()
 		enemy_manager.enemy_drop(global_position)
 		death_timer.start()

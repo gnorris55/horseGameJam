@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=44 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6w35ixf7v74j" path="res://Assets/Sprites/laser.png" id="3_d2thw"]
 [ext_resource type="Texture2D" uid="uid://b3xcwiheg1e8i" path="res://Assets/Sprites/Machinegun.png" id="4_54oyr"]
 [ext_resource type="Script" path="res://Scripts/movement.gd" id="4_k8850"]
-[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/machete.png" id="4_rr0rv"]
+[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/Machete.png" id="4_rr0rv"]
 [ext_resource type="Texture2D" uid="uid://y53eomoyw8p7" path="res://Assets/Sprites/Shotgun.png" id="5_il1in"]
 [ext_resource type="Texture2D" uid="uid://c0equ3g7cdpyl" path="res://Assets/Sprites/Chainsaw.png" id="5_qtfgl"]
 [ext_resource type="Texture2D" uid="uid://c38kcrbpkhkf0" path="res://Assets/Sprites/Sawblade 2.png" id="6_oide1"]
@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://beb47wna515g0" path="res://Assets/Sprites/Horse.png" id="7_tkv7t"]
 [ext_resource type="Texture2D" uid="uid://bb4xe465dfujk" path="res://Assets/Sprites/Fan1.png" id="13_ufrrg"]
 [ext_resource type="Texture2D" uid="uid://dvykfjueer5yd" path="res://Assets/Sprites/Fan2.png" id="14_1830x"]
+[ext_resource type="Texture2D" uid="uid://bc1jihxe61fm8" path="res://Assets/Sprites/Sawblade 1.png" id="15_ik71y"]
 [ext_resource type="Texture2D" uid="uid://c4lmhjgjb2n4l" path="res://Assets/Sprites/Wheel1.png" id="15_sxoma"]
+[ext_resource type="Texture2D" uid="uid://bpg1o8rbrqpmi" path="res://Assets/Sprites/Sawblade 3.png" id="16_bqd1h"]
 [ext_resource type="Texture2D" uid="uid://ddw8xufc1aw0c" path="res://Assets/Sprites/Wheel2.png" id="16_cxcfj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4moj0"]
@@ -154,6 +156,18 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("14_1830x")
 region = Rect2(0, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_imi35"]
+atlas = ExtResource("15_ik71y")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnp80"]
+atlas = ExtResource("6_oide1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pfl4"]
+atlas = ExtResource("16_bqd1h")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xf2wc"]
 atlas = ExtResource("15_sxoma")
 region = Rect2(0, 0, 64, 64)
@@ -173,6 +187,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"fans",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imi35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnp80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pfl4")
+}],
+"loop": true,
+"name": &"saws",
 "speed": 5.0
 }, {
 "frames": [{
@@ -287,6 +315,7 @@ offset_bottom = 85.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="horseSpriteAnimated" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_5n24l")
 
 [node name="immuneTimer" type="Timer" parent="."]
@@ -295,8 +324,6 @@ one_shot = true
 [node name="movementSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sw0ms")
 animation = &"fans"
-frame = 1
-frame_progress = 0.427463
 
 [connection signal="timeout" from="weapons/mainWeapons/attack_cooldown" to="weapons/mainWeapons" method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="weapons/tailWeapons/weapon/weaponsArea2D" to="weapons/tailWeapons" method="_on_weapons_area_2d_area_entered"]
