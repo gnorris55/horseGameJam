@@ -34,7 +34,7 @@ func movement(delta: float):
 				direction = direction.rotated(ANGLUAR_SPEED *delta)
 			else:
 				direction = direction.rotated(-ANGLUAR_SPEED *delta)
-			rotation = direction.angle()
+			rotation = direction.angle()+PI/2
 			global_position += speed*delta*direction
 
 func take_damage(damage, hit_back = false):
@@ -51,7 +51,7 @@ func take_damage(damage, hit_back = false):
 		area_2d.queue_free()
 		health_bar.visible = false
 
-		$Polygon2D.queue_free()
+		$sheildSprite.queue_free()
 		
 		
 	elif (hit_back):
