@@ -27,18 +27,21 @@ signal pimp_change(slot: int, pimp: int)
 @onready var pimpingIcon = $PimpingIcon
 @onready var pimpSlotsNode = $PimpSlots
 @onready var pimpSlots = [$PimpSlots/HornSlot, $PimpSlots/BodySlot, $PimpSlots/MinifridgeSlot, $PimpSlots/TailSlot, $PimpSlots/HoovesSlot]
+var horse_node
 var pimpsDict: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_reset_pimping_menu()
+	horse_node = get_node_or_null("../../Horse")
 	for pimpSlot in pimpSlots:
 		pimpSlot.close_all_except.connect(_close_all_except)
+		pimpSlot.horse_node = horse_node
 		for pimp in pimpSlot.get_node("Pimps").get_children():
 			pimpsDict[pimp.name] = pimp
 			#costs[pimp.name] = pimp.get_meta("Carrots")
 	global_pimpbus.pimp_changed.connect(_pimp_changed)
-	global_pimpbus.emit_global_signal("connect_menu", self)
+	global_pimpbus.emit_global_signal("connect_menu", [self])
 
 func _reset_pimping_menu() -> void:
 	modulate = Color(1, 1, 1, 0.20)
@@ -50,18 +53,18 @@ func _reset_pimping_menu() -> void:
 
 func _input(event: InputEvent) -> void: 
 	# Test keys
-	if (event is InputEventKey) and event.pressed and event.keycode == KEY_Y:
-		_reset_pimping_menu()
-	if (event is InputEventKey) and event.pressed and event.keycode == KEY_U:
-		getall_pimp_prices()
-	if (event is InputEventKey) and event.pressed and event.keycode == KEY_I:
-		set_pimp_unlock("armor1", 169)
-		set_pimp_unlock("armor2", 124)
-		set_pimp_unlock("armor3", 117)
-		set_pimp_unlock("armor4", 36)
-		set_pimp_unlock("armor5", 10)
-	if (event is InputEventKey) and event.pressed and event.keycode == KEY_O:
-		print(getall_pimp_prices())
+	#if (event is InputEventKey) and event.pressed and event.keycode == KEY_Y:
+		#_reset_pimping_menu()
+	#if (event is InputEventKey) and event.pressed and event.keycode == KEY_U:
+		#getall_pimp_prices()
+	#if (event is InputEventKey) and event.pressed and event.keycode == KEY_I:
+		#set_pimp_unlock("armor1", 169)
+		#set_pimp_unlock("armor2", 124)
+		#set_pimp_unlock("armor3", 117)
+		#set_pimp_unlock("armor4", 36)
+		#set_pimp_unlock("armor5", 10)
+	#if (event is InputEventKey) and event.pressed and event.keycode == KEY_O:
+		#print(getall_pimp_prices())
 	
 	 #Mouse in viewport coordinates.
 	if (event is InputEventMouseMotion) \
@@ -81,7 +84,9 @@ func _close_all_except(except: Node) -> void:
 
 func _pimp_changed(slot, pimp, unlocked):
 	#print(slot, " ", pimp, " ", unlocked) # Test
-	#set_pimp_unlock(pimp)
+	##set_pimp_unlock(pimp)
+	#if horse_node.money >= get_pimp(pimp).get_meta("Carrots"):
+		#get_pimp(pimp_to_unlock).set_meta("Unlocked", true)
 	_reset_pimping_menu()
 
 

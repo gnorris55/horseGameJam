@@ -23,15 +23,15 @@ func change_pimp(pimpSlot: String, pimp: String, unlocked:bool) -> void:
 ### GLOBAL SIGNAL SYSTEM ###
 var signal_listeners = {}
 
-func emit_global_signal(signal_name: String, args = []):
-	if signal_listeners.has(signal_name):
-		for callable in signal_listeners[signal_name]:
-			callable.callv(args)
-
 func listen_to_signal(signal_name: String, target: Object, method: String):
 	if not signal_listeners.has(signal_name):
 		signal_listeners[signal_name] = []
 	signal_listeners[signal_name].append(Callable(target, method))
+
+func emit_global_signal(signal_name: String, args = []):
+	if signal_listeners.has(signal_name):
+		for callable in signal_listeners[signal_name]:
+			callable.callv(args)
 
 ### USEFUL FUNCTIONS ###
 func for_each(array: Array, callable: Callable):

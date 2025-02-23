@@ -6,6 +6,8 @@ var pimps: Array[Node]
 var pricing = [43, 68, 117, 175, 224]
 ## Pricing is ordered, tier 1 – 5: 43, 68, 117, 175, 224
 
+var horse_node: Node
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +27,7 @@ func _ready() -> void:
 		pimps[0].set_text("Machinegun")
 		set_button_icon(pimps[0].get_button_icon())
 	global_pimpbus.pimp_changed.connect(_signal_pimpbus_pimp_changed)
+	global_pimpbus.listen_to_signal("connect_menu", self, "asdf")
 
 func _process(delta: float) -> void:
 	for pimp in pimps:
@@ -38,10 +41,16 @@ func _button_pressed() -> void:
 	emit_signal("close_all_except", self)
 
 func _pimp_pressed(pimp: Node) -> void:
-	global_pimpbus.change_pimp(self.name, pimp.name, pimp.get_meta("Unlocked"))
-	if (pimp.get_meta("Unlocked")): set_button_icon(pimp.get_button_icon())
+	if horse_node.money >= pimp.get_meta("Carrots"):
+		pimp.set_meta("Unocked", true)
+	if (pimp.get_meta("Unlocked")):
+		set_button_icon(pimp.get_button_icon())
+		global_pimpbus.change_pimp(self.name, pimp.name, pimp.get_meta("Unlocked"))
 
 func _signal_pimpbus_pimp_changed(slot: String, pimp: String, unlocked:bool) -> void: pass
 
+func asdf(node: Node):
+	print(node)
+	pass
 
 #################################################################################################
