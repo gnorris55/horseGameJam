@@ -65,6 +65,8 @@ func _input(event: InputEvent) -> void:
 		#set_pimp_unlock("armor5", 10)
 	#if (event is InputEventKey) and event.pressed and event.keycode == KEY_O:
 		#print(getall_pimp_prices())
+	if (event is InputEventKey) and event.pressed and event.keycode == KEY_P:
+		horse_node.money = 100
 	
 	 #Mouse in viewport coordinates.
 	if (event is InputEventMouseMotion) \

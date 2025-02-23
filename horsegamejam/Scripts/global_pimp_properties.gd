@@ -16,10 +16,10 @@ signal pimp_changed(slot: String, pimp: String, unlocked:bool)
 # <unlocked>: whenther the node's meta data "Unlocked" is true or not.
 # true -> is unlocked / has been purchased (default is false)
 
-func change_pimp(pimpSlot: String, pimp: String) -> void:
-	emit_signal("pimp_changed", pimpSlot, pimp)
-#func change_pimp(pimpSlot: String, pimp: String, unlocked:bool) -> void:
-	#emit_signal("pimp_changed", pimpSlot, pimp, unlocked)
+#func change_pimp(pimpSlot: String, pimp: String) -> void:
+	#emit_signal("pimp_changed", pimpSlot, pimp)
+func change_pimp(pimpSlot: String, pimp: String, unlocked:bool) -> void:
+	emit_signal("pimp_changed", pimpSlot, pimp, unlocked)
 
 
 ### GLOBAL SIGNAL SYSTEM ###

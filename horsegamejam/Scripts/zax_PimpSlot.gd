@@ -41,12 +41,13 @@ func _button_pressed() -> void:
 	emit_signal("close_all_except", self)
 
 func _pimp_pressed(pimp: Node) -> void:
-	if horse_node.money >= pimp.get_meta("Carrots"):
+	print(horse_node.money)
+	if horse_node.money >= pimp.get_meta("Carrots") and not pimp.get_meta("Unlocked"):
 		horse_node.money -= pimp.get_meta("Carrots")
 		pimp.set_meta("Unlocked", true)
 	if pimp.get_meta("Unlocked"):
 		set_button_icon(pimp.get_button_icon())
-		global_pimpbus.change_pimp(self.name, pimp.name)
+		global_pimpbus.change_pimp(self.name, pimp.name, pimp.get_meta("Unlocked"))
 
 func _signal_pimpbus_pimp_changed(slot: String, pimp: String, unlocked:bool) -> void: pass
 
