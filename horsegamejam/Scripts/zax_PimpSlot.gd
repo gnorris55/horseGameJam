@@ -42,6 +42,7 @@ func _button_pressed() -> void:
 
 func _pimp_pressed(pimp: Node) -> void:
 	if horse_node.money >= pimp.get_meta("Carrots"):
+		horse_node.money -= pimp.get_meta("Carrots")
 		pimp.set_meta("Unocked", true)
 	if (pimp.get_meta("Unlocked")):
 		set_button_icon(pimp.get_button_icon())
