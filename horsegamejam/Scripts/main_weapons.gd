@@ -8,12 +8,16 @@ var projectile_scene = preload("res://Scenes/horse_projectile.tscn")
 var rng = RandomNumberGenerator.new()
 @onready var main_scene = horse_node.get_parent()
 
+
+var laser_sound = load("res://Assets/audio/laser.ogg")
+var shoot_sound = load("res://Assets/audio/shot.ogg")
+
 # offset needs to be half length bullet * scale of bullet animated sprite
 #var attack_ind = 1
 const attack_names = ["empty","laser","machine_gun","shotgun"]
 const GUNS = {
 	"laser":{"spread":0,"bullets":1,"damage":20,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":0},
-	"machine_gun":{"spread":40,"bullets":10,"damage":100,"cooldown":0.005,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0},
+	"machine_gun":{"spread":40,"bullets":10,"damage":100,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0},
 	"shotgun":{"spread":10,"bullets":10,"damage":3,"cooldown":0.5,"speed":700,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":0}
 	}
 var countdown_finished = true
@@ -47,6 +51,13 @@ func _process(delta: float) -> void:
 		$weaponSprites.play(attack_type)
 	if attack_type!= "empty" and Input.is_action_pressed("attack") and horse_node.stamina >= GUNS[attack_type].stamina:
 		if countdown_finished == true:
+			if attack_type == "laser":
+				$AudioStreamPlayer2D.stream = laser_sound
+				$AudioStreamPlayer2D.play()
+			else:
+				$AudioStreamPlayer2D.stream = shoot_sound
+				$AudioStreamPlayer2D.play()
+				
 			#var i = 0
 			for i in GUNS[attack_type].bullets:
 				var l = projectile_scene.instantiate()
