@@ -1,12 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://s05nmmd5gvxd"]
+[gd_scene load_steps=23 format=3 uid="uid://s05nmmd5gvxd"]
 
 [ext_resource type="Script" path="res://Scripts/zax_PimpingUI.gd" id="1_vfhd3"]
 [ext_resource type="Texture2D" uid="uid://du7c6hl2i107h" path="res://Assets/Sprites/pimicon.png" id="2_srxq5"]
 [ext_resource type="Texture2D" uid="uid://tiy6qacvb8ml" path="res://Assets/Sprites/pimp-my-hide.png" id="3_3655a"]
 [ext_resource type="Script" path="res://Scripts/zax_PimpSlot.gd" id="4_w41pa"]
-[ext_resource type="Texture2D" uid="uid://c6w35ixf7v74j" path="res://Assets/Sprites/laser.png" id="5_edsyg"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47ovv"]
+[ext_resource type="Texture2D" uid="uid://y53eomoyw8p7" path="res://Assets/Sprites/Shotgun.png" id="5_mibqc"]
+[ext_resource type="Texture2D" uid="uid://b3xcwiheg1e8i" path="res://Assets/Sprites/Machinegun.png" id="6_ns6nk"]
+[ext_resource type="Texture2D" uid="uid://bleijhuq2y3xv" path="res://Assets/Sprites/laser2.png" id="8_25fxo"]
+[ext_resource type="Texture2D" uid="uid://b8v22if5tvtvn" path="res://Assets/Sprites/TestSprites/icon.svg" id="9_c2xra"]
+[ext_resource type="Texture2D" uid="uid://b5fqlk5y4swi4" path="res://Assets/Sprites/Armor1.png" id="9_c8j61"]
+[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/machete.png" id="10_c6gw6"]
+[ext_resource type="Texture2D" uid="uid://dwpiom4oibef5" path="res://Assets/Sprites/Armor2.png" id="10_lnsxd"]
+[ext_resource type="Texture2D" uid="uid://dtelcpwgfbcl8" path="res://Assets/Sprites/Armor3.png" id="11_eened"]
+[ext_resource type="Texture2D" uid="uid://c0xkpltcysbtv" path="res://Assets/Sprites/Armor4.png" id="12_0ccuh"]
+[ext_resource type="Texture2D" uid="uid://c838tp7kjkrfo" path="res://Assets/Sprites/Armor5.png" id="13_3n6xw"]
+[ext_resource type="Texture2D" uid="uid://dk0la7mn0pxtn" path="res://Assets/Sprites/fridge1.png" id="14_jpv1o"]
+[ext_resource type="Texture2D" uid="uid://biixsmx341scc" path="res://Assets/Sprites/fridge2.png" id="15_6y2wl"]
+[ext_resource type="Texture2D" uid="uid://wo1g2ni35anh" path="res://Assets/Sprites/fridge3.png" id="16_okre3"]
+[ext_resource type="Texture2D" uid="uid://sbhylif0hk84" path="res://Assets/Sprites/tailsaw1.png" id="18_m7458"]
+[ext_resource type="Texture2D" uid="uid://c0equ3g7cdpyl" path="res://Assets/Sprites/Chainsaw.png" id="18_qky1s"]
+[ext_resource type="Texture2D" uid="uid://c4lmhjgjb2n4l" path="res://Assets/Sprites/Wheel1.png" id="19_115pm"]
+[ext_resource type="Texture2D" uid="uid://bc1jihxe61fm8" path="res://Assets/Sprites/Sawblade 1.png" id="20_rh0x6"]
+[ext_resource type="Texture2D" uid="uid://bb4xe465dfujk" path="res://Assets/Sprites/Fan1.png" id="21_3n4yj"]
 
 [node name="PimpingMenu" type="Control"]
 layout_mode = 3
@@ -48,55 +63,71 @@ texture = ExtResource("3_3655a")
 [node name="HornSlot" type="Button" parent="PimpSlots"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.168
-anchor_top = 0.106
-anchor_right = 0.254
-anchor_bottom = 0.229
-offset_left = 0.424011
-offset_top = 0.122002
-offset_right = 0.522034
-offset_bottom = 0.272995
-script = ExtResource("4_w41pa")
-
-[node name="Pimps" type="Control" parent="PimpSlots/HornSlot"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="lazer" type="Button" parent="PimpSlots/HornSlot/Pimps"]
-layout_mode = 2
-anchor_left = -3.43437
-anchor_top = -0.228125
-anchor_right = -0.109375
-anchor_bottom = 1.57187
-text = "Lazer"
-icon = ExtResource("5_edsyg")
+anchor_left = 0.165563
+anchor_top = 0.106488
+anchor_right = 0.257332
+anchor_bottom = 0.23755
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("9_c2xra")
 flat = true
-metadata/Unlocked = false
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_w41pa")
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="PimpSlots/HornSlot/Pimps/lazer"]
-position = Vector2(50, 87.5)
-scale = Vector2(3.33203, 2.74609)
-texture = ExtResource("5_edsyg")
+[node name="Pimps" type="Control" parent="PimpSlots/HornSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="machinegun" type="Button" parent="PimpSlots/HornSlot/Pimps"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.08249
+anchor_top = -0.469999
+anchor_right = 21.9691
+anchor_bottom = 1.36
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Machinegun"
+icon = ExtResource("6_ns6nk")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="shotgun" type="Button" parent="PimpSlots/HornSlot/Pimps"]
 layout_mode = 2
-offset_left = 56.375
-offset_top = -40.375
-offset_right = 324.375
-offset_bottom = 137.625
-text = "Charlie brown"
-metadata/Unlocked = false
+anchor_left = 9.08249
+anchor_top = 1.40375
+anchor_right = 21.9691
+anchor_bottom = 3.23374
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Shotgun"
+icon = ExtResource("5_mibqc")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
-[node name="machinegun" type="Button" parent="PimpSlots/HornSlot/Pimps"]
+[node name="lazer" type="Button" parent="PimpSlots/HornSlot/Pimps"]
 layout_mode = 2
-offset_left = -178.0
-offset_top = 131.5
-offset_right = 90.0
-offset_bottom = 309.5
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaa"
-metadata/Unlocked = false
+anchor_left = 9.08249
+anchor_top = 3.28374
+anchor_right = 21.9691
+anchor_bottom = 5.11373
+offset_right = -50.0
+offset_bottom = 3.05176e-05
+theme_override_font_sizes/font_size = 128
+text = "Lazer"
+icon = ExtResource("8_25fxo")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="BodySlot" type="Button" parent="PimpSlots"]
 layout_mode = 1
@@ -107,41 +138,91 @@ anchor_right = 0.45246
 anchor_bottom = 0.417759
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_47ovv")
+icon = ExtResource("9_c2xra")
+flat = true
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("4_w41pa")
 metadata/_edit_use_anchors_ = true
 
 [node name="Pimps" type="Control" parent="PimpSlots/BodySlot"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="machete" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+[node name="armor1" type="Button" parent="PimpSlots/BodySlot/Pimps"]
 layout_mode = 2
-offset_left = -267.125
-offset_top = -37.4998
-offset_right = 0.874634
-offset_bottom = -6.49982
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaa"
-metadata/Unlocked = false
+anchor_left = 6.95878
+anchor_top = -1.84374
+anchor_right = 19.8454
+anchor_bottom = -0.0137481
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Armor 1"
+icon = ExtResource("9_c8j61")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
-[node name="chainsaw" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+[node name="armor2" type="Button" parent="PimpSlots/BodySlot/Pimps"]
 layout_mode = 2
-offset_left = -267.125
-offset_top = -2.49983
-offset_right = 0.874634
-offset_bottom = 28.5002
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaa"
-metadata/Unlocked = false
+anchor_left = 6.95362
+anchor_right = 19.8402
+anchor_bottom = 1.83
+offset_right = -50.0001
+theme_override_font_sizes/font_size = 128
+text = "Armor 2"
+icon = ExtResource("10_lnsxd")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
-[node name="sawblade" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+[node name="armor3" type="Button" parent="PimpSlots/BodySlot/Pimps"]
 layout_mode = 2
-offset_left = -267.125
-offset_top = 32.5002
-offset_right = 0.874634
-offset_bottom = 63.5002
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaa"
-metadata/Unlocked = false
+anchor_left = 6.96135
+anchor_top = 1.87375
+anchor_right = 19.848
+anchor_bottom = 3.70374
+offset_right = -49.9999
+theme_override_font_sizes/font_size = 128
+text = "Armor 3"
+icon = ExtResource("11_eened")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="armor4" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+layout_mode = 2
+anchor_left = 6.95878
+anchor_top = 3.74374
+anchor_right = 19.8454
+anchor_bottom = 5.57373
+offset_right = -49.9999
+theme_override_font_sizes/font_size = 128
+text = "Armor 4
+"
+icon = ExtResource("12_0ccuh")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="armor5" type="Button" parent="PimpSlots/BodySlot/Pimps"]
+layout_mode = 2
+anchor_left = 6.95878
+anchor_top = 5.59373
+anchor_right = 19.8454
+anchor_bottom = 7.42373
+offset_right = -49.9999
+theme_override_font_sizes/font_size = 128
+text = "Armor 5"
+icon = ExtResource("13_3n6xw")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="MinifridgeSlot" type="Button" parent="PimpSlots"]
 layout_mode = 1
@@ -152,41 +233,62 @@ anchor_right = 0.683065
 anchor_bottom = 0.409568
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_47ovv")
+icon = ExtResource("9_c2xra")
+flat = true
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("4_w41pa")
-metadata/_edit_use_anchors_ = true
 
 [node name="Pimps" type="Control" parent="PimpSlots/MinifridgeSlot"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="regular" type="Button" parent="PimpSlots/MinifridgeSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.0
-offset_top = -172.0
-offset_right = 436.0
-offset_bottom = -141.0
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-metadata/Unlocked = false
+anchor_left = 4.44331
+anchor_top = -1.78624
+anchor_right = 17.3299
+anchor_bottom = 0.0437499
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Regular"
+icon = ExtResource("14_jpv1o")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="gold" type="Button" parent="PimpSlots/MinifridgeSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.0
-offset_top = -137.0
-offset_right = 436.0
-offset_bottom = -106.0
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-metadata/Unlocked = false
+anchor_left = 4.44331
+anchor_top = 0.0937496
+anchor_right = 17.3299
+anchor_bottom = 1.92374
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Gold"
+icon = ExtResource("15_6y2wl")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="platinum" type="Button" parent="PimpSlots/MinifridgeSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.0
-offset_top = -102.0
-offset_right = 436.0
-offset_bottom = -70.9995
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-metadata/Unlocked = false
+anchor_left = 4.44331
+anchor_top = 1.96374
+anchor_right = 17.3299
+anchor_bottom = 3.79374
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Platinum"
+icon = ExtResource("16_okre3")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="TailSlot" type="Button" parent="PimpSlots"]
 layout_mode = 1
@@ -197,54 +299,62 @@ anchor_right = 0.82202
 anchor_bottom = 0.638926
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_47ovv")
+icon = ExtResource("9_c2xra")
+flat = true
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("4_w41pa")
-metadata/_edit_use_anchors_ = true
 
 [node name="Pimps" type="Control" parent="PimpSlots/TailSlot"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="armor1" type="Button" parent="PimpSlots/TailSlot/Pimps"]
+[node name="machete" type="Button" parent="PimpSlots/TailSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.125
-offset_top = -118.75
-offset_right = 353.125
-offset_bottom = -87.7504
-text = "Minesaaaaaaaaaaaaaaaaaaaaa"
+anchor_left = 2.92784
+anchor_top = -3.52999
+anchor_right = 15.8145
+anchor_bottom = -1.69999
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Machete"
+icon = ExtResource("10_c6gw6")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
-[node name="armor2" type="Button" parent="PimpSlots/TailSlot/Pimps"]
+[node name="chainsaw" type="Button" parent="PimpSlots/TailSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.125
-offset_top = -83.7504
-offset_right = 353.125
-offset_bottom = -52.7504
-text = "Minesaaaaaaaaaaaaaaaaaaaaa"
+anchor_left = 2.92784
+anchor_top = -1.65999
+anchor_right = 15.8145
+anchor_bottom = 0.169999
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Chainsaw"
+icon = ExtResource("18_qky1s")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
-[node name="armor3" type="Button" parent="PimpSlots/TailSlot/Pimps"]
+[node name="sawblade" type="Button" parent="PimpSlots/TailSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.125
-offset_top = -48.7504
-offset_right = 353.125
-offset_bottom = -17.7504
-text = "Minesaaaaaaaaaaaaaaaaaaaaa"
-
-[node name="armor4" type="Button" parent="PimpSlots/TailSlot/Pimps"]
-layout_mode = 2
-offset_left = 103.125
-offset_top = -13.7504
-offset_right = 353.125
-offset_bottom = 17.2496
-text = "Minesaaaaaaaaaaaaaaaaaaaaa"
-
-[node name="armor5" type="Button" parent="PimpSlots/TailSlot/Pimps"]
-layout_mode = 2
-offset_left = 103.125
-offset_top = 21.2496
-offset_right = 353.125
-offset_bottom = 52.2496
-text = "Minesaaaaaaaaaaaaaaaaaaaaa"
+anchor_left = 2.92784
+anchor_top = 0.249999
+anchor_right = 15.8145
+anchor_bottom = 2.07999
+offset_right = -50.0
+theme_override_font_sizes/font_size = 128
+text = "Sawblade"
+icon = ExtResource("18_m7458")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="HoovesSlot" type="Button" parent="PimpSlots"]
 layout_mode = 1
@@ -255,37 +365,61 @@ anchor_right = 0.467242
 anchor_bottom = 0.69217
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_47ovv")
+icon = ExtResource("9_c2xra")
+flat = true
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("4_w41pa")
-metadata/_edit_use_anchors_ = true
 
 [node name="Pimps" type="Control" parent="PimpSlots/HoovesSlot"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="wheels" type="Button" parent="PimpSlots/HoovesSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.0
-offset_top = -34.0
-offset_right = 390.0
-offset_bottom = -3.0
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaaaa"
+anchor_left = 6.79383
+anchor_top = -3.93624
+anchor_right = 19.6805
+anchor_bottom = -2.10624
+offset_right = -50.0001
+theme_override_font_sizes/font_size = 128
+text = "Wheels"
+icon = ExtResource("19_115pm")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="sawblades" type="Button" parent="PimpSlots/HoovesSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.0
-offset_top = 1.0
-offset_right = 390.0
-offset_bottom = 32.0
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaaaa"
+anchor_left = 6.79383
+anchor_top = -2.06624
+anchor_right = 19.6805
+anchor_bottom = -0.236251
+offset_right = -50.0001
+theme_override_font_sizes/font_size = 128
+text = "Sawblades"
+icon = ExtResource("20_rh0x6")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="fans" type="Button" parent="PimpSlots/HoovesSlot/Pimps"]
 layout_mode = 2
-offset_left = 103.0
-offset_top = 36.0
-offset_right = 390.0
-offset_bottom = 67.0
-text = "Minesaaaaaaaaaaaaaaaaaaaaaaaaa"
+anchor_left = 6.79383
+anchor_top = -0.18625
+anchor_right = 19.6805
+anchor_bottom = 1.64374
+offset_right = -50.0001
+theme_override_font_sizes/font_size = 128
+text = "Fans"
+icon = ExtResource("21_3n4yj")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="PimpingIcon" to="." method="_signal_PimpingIcon_mouse_entered"]
