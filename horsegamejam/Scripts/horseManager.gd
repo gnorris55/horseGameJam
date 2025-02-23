@@ -17,7 +17,7 @@ var tail_weapon_state = 0
 var armour_type_state = 0
 var beer_fridge_state = 0
 
-var money = 0
+var money = 1000
 
 var stamina_factors = [5,10,20,50]
 var armor_factors = [1,0.8,0.6,0.5,0.2,0.1]
@@ -103,6 +103,7 @@ func take_damage(damage, direction):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	currency_label.text = "carrots: " + str(money)
 	if stamina < MAX_STAMINA:
 		stamina += delta*stamina_factors[beer_fridge_state]
 		if stamina > MAX_STAMINA:
@@ -156,11 +157,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_immune_timer_timeout() -> void:
 	immune = false
 
-func pimp_changed(slot: String, type: String,unlocked: bool):
-	if unlocked:
-		if slot == "HoovesSlot":
-			change_movement(type)
-		elif slot == "MinifridgeSlot":
-			change_fridge(type)
-		elif slot == "BodySlot":
+func pimp_changed(slot: String, type: String):#,unlocked: bool):
+	
+	#print(slot,type,unlocked)
+	#if unlocked:
+	if slot == "HoovesSlot":
+		change_movement(type)
+	elif slot == "MinifridgeSlot":
+		change_fridge(type)
+	elif slot == "BodySlot":
 			change_armor(type)
