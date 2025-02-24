@@ -6,6 +6,9 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 @onready var health_bar: ProgressBar = $healthBar
 
+@onready var hit_sound: AudioStreamPlayer2D = $hitSound
+@onready var death_sound: AudioStreamPlayer2D = $deathSound
+
 @export var speed = 130
 @export var health = 50
 
@@ -33,9 +36,14 @@ func movement(delta: float):
 func take_damage(damage, hit_back = false):
 	health -= damage
 	health_bar.value = health
+	
+	
+	if (health > 0):
+		hit_sound.play()
 	#TODO: make the bounce back more realistic
 	
 	if (health <= 0 and health_bar.visible):
+		death_sound.play()
 		var enemy_manager = get_parent()
 		enemy_manager.enemy_drop(global_position)
 		death_timer.start()
@@ -43,6 +51,7 @@ func take_damage(damage, hit_back = false):
 		sprite_2d.visible = false
 		area_2d.queue_free()
 		health_bar.visible = false
+		
 		
 	elif (hit_back):
 		global_position = global_position - direction*20	

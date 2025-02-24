@@ -8,6 +8,9 @@ const ENEMY_BULLET = preload("res://Scenes/enemy_bullet.tscn")
 @onready var area_2d: Area2D = $Area2D
 @onready var health_bar: ProgressBar = $healthBar
 
+@onready var hit_sound: AudioStreamPlayer2D = $hitSound
+@onready var death_sound: AudioStreamPlayer2D = $deathSound
+
 @export var speed = 70
 @export var health = 50
 
@@ -39,8 +42,11 @@ func take_damage(damage, hit_back = false):
 	health -= damage
 	health_bar.value = health
 
+	if (health > 0):
+		hit_sound.play()
 	
 	if (health <= 0 and health_bar.visible):
+		death_sound.play()
 		var enemy_manager = get_parent()
 		enemy_manager.enemy_drop(global_position)
 		death_timer.start()

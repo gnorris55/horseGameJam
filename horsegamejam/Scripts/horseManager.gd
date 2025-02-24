@@ -7,6 +7,7 @@ extends Node2D
 @onready var immune_timer: Timer = $immuneTimer
 @onready var movement: Node2D = $movement
 @onready var movement_sprite: AnimatedSprite2D = $movementSprite
+@onready var carrot_pickup: AudioStreamPlayer2D = $carrotPickup
 
 var MAX_STAMINA = 50
 @export var health = 100
@@ -110,7 +111,7 @@ func _process(delta: float) -> void:
 		if stamina > MAX_STAMINA:
 			stamina = MAX_STAMINA
 		stamina_bar.value = stamina
-		
+	'''
 	if Input.is_action_just_pressed("changeMovement"):
 		movement_state = (movement_state + 1) % 4
 		
@@ -132,13 +133,14 @@ func _process(delta: float) -> void:
 			movement_sprite.z_index = 0
 			movement_sprite.visible = true
 			movement.speed = 500
-			
+	'''
 		
 var immune = false
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carrot"):
 		area.get_parent().queue_free()
 		money += 5
+		carrot_pickup.play()
 		currency_label.text = str(money)
 	elif area.is_in_group("healthPotion"):
 		area.get_parent().queue_free()

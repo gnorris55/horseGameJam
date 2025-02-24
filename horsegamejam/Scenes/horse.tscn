@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=63 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dk0la7mn0pxtn" path="res://Assets/Sprites/fridge1.png" id="24_ui5a3"]
 [ext_resource type="Texture2D" uid="uid://biixsmx341scc" path="res://Assets/Sprites/fridge2.png" id="25_hp5yt"]
 [ext_resource type="Texture2D" uid="uid://wo1g2ni35anh" path="res://Assets/Sprites/fridge3.png" id="26_rvko4"]
+[ext_resource type="AudioStream" uid="uid://dptqm220lbk3v" path="res://Assets/audio/pick up.ogg" id="32_dvmgf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ns6dx"]
 animations = [{
@@ -492,6 +493,9 @@ one_shot = true
 [node name="movementSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sw0ms")
 animation = &"fans"
+
+[node name="carrotPickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_dvmgf")
 
 [connection signal="timeout" from="weapons/mainWeapons/attack_cooldown" to="weapons/mainWeapons" method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="weapons/tailWeapons/weapon/weaponsArea2D" to="weapons/tailWeapons" method="_on_weapons_area_2d_area_entered"]
