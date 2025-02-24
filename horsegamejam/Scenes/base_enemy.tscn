@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2n6qjgu5xgty"]
+[gd_scene load_steps=8 format=3 uid="uid://b2n6qjgu5xgty"]
 
 [ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_jhv1h"]
 [ext_resource type="Texture2D" uid="uid://7c8ebgwxdsr4" path="res://Assets/Sprites/assetsStage2/Farmer 1.png" id="2_l76w2"]
+[ext_resource type="Texture2D" uid="uid://l45j7ps1j1y7" path="res://Assets/Sprites/blank_blood.png" id="3_wuva1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjq2d"]
 radius = 23.0
@@ -37,16 +38,17 @@ one_shot = true
 emitting = false
 one_shot = true
 explosiveness = 1.0
+texture = ExtResource("3_wuva1")
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 70.0
-scale_amount_min = 20.0
-scale_amount_max = 20.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_dnpaa")
-color = Color(1, 0, 0, 1)
+color = Color(0.690196, 0.0117647, 0.0470588, 1)
 
 [node name="healthBar" type="ProgressBar" parent="."]
 offset_left = -26.0

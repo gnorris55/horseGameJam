@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0wa58dx5kigj"]
+[gd_scene load_steps=8 format=3 uid="uid://c0wa58dx5kigj"]
 
 [ext_resource type="Script" path="res://Scripts/gun_enemy.gd" id="1_xelk1"]
 [ext_resource type="Texture2D" uid="uid://dg67cbjc063v7" path="res://Assets/Sprites/assetsStage2/Farmer 2.png" id="2_v6m72"]
+[ext_resource type="Texture2D" uid="uid://l45j7ps1j1y7" path="res://Assets/Sprites/blank_blood.png" id="3_x2h1n"]
 
 [sub_resource type="Curve" id="Curve_w7pci"]
 _data = [Vector2(0.0674157, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.859551, 0.175824), 0.0, 0.0, 0, 0]
@@ -28,16 +29,17 @@ offset = Vector2(0, -9)
 emitting = false
 one_shot = true
 explosiveness = 1.0
+texture = ExtResource("3_x2h1n")
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 70.0
-scale_amount_min = 20.0
-scale_amount_max = 20.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_w7pci")
-color = Color(1, 0, 0, 1)
+color = Color(0.689517, 0.0124382, 0.0483764, 1)
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemyArea2D"]]
 
