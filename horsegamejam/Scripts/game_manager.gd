@@ -1,8 +1,9 @@
 extends Node2D
-@onready var game_over_menu: CanvasLayer = $gameOverMenu
 @onready var horse: Node2D = $Horse
 @onready var enemy_mananager: Node2D = $enemyMananager
 
+@onready var game_over_menu: Label = $CanvasLayer2/Control/Control/gameOverText
+@onready var restart_button: Button = $CanvasLayer2/Control/Control/restartButton
 
 var game_state = 0
 	
@@ -10,6 +11,7 @@ var game_state = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game_over_menu.visible = false
+	restart_button.visible = false
 	pass # Replace with function body.
 
 
@@ -19,6 +21,7 @@ func _process(delta: float) -> void:
 	
 func game_over():
 	game_over_menu.visible = true
+	restart_button.visible = true
 	#enemy_mananager.queue_free()
 	horse.queue_free()
 

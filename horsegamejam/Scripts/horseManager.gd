@@ -1,11 +1,13 @@
 extends Node2D
-@onready var health_bar: ProgressBar = $playerUI/Control/healthBar
-@onready var stamina_bar: ProgressBar = $playerUI/Control/staminaBar
-@onready var currency_label: Label = $playerUI/Control/currency
+
+@onready var health_bar: ProgressBar = $playerUI/Control/Control/healthBar
+@onready var stamina_bar: ProgressBar = $playerUI/Control/Control/staminaBar
+@onready var currency_label: Label = $playerUI/Control/currency2/currency
 
 @onready var immune_timer: Timer = $immuneTimer
 @onready var movement: Node2D = $movement
 @onready var movement_sprite: AnimatedSprite2D = $movementSprite
+@onready var carrot_pickup: AudioStreamPlayer2D = $carrotPickup
 
 var MAX_STAMINA = 50
 @export var health = 100
@@ -19,13 +21,13 @@ var beer_fridge_state = 0
 
 var money = 1000
 
-var stamina_factors = [5,10,20,50]
+var stamina_factors = [7,14,20,50]
 var armor_factors = [1,0.8,0.6,0.5,0.2,0.1]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	currency_label.text = "carrots: " + str(money)
+	currency_label.text = str(money)
 	health_bar.max_value = health
 	health_bar.value = health
 	movement_sprite.visible = false
@@ -103,13 +105,13 @@ func take_damage(damage, direction):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	currency_label.text = "carrots: " + str(money)
+	currency_label.text = str(money)
 	if stamina < MAX_STAMINA:
 		stamina += delta*stamina_factors[beer_fridge_state]
 		if stamina > MAX_STAMINA:
 			stamina = MAX_STAMINA
 		stamina_bar.value = stamina
-		
+	'''
 	if Input.is_action_just_pressed("changeMovement"):
 		movement_state = (movement_state + 1) % 4
 		
@@ -131,14 +133,15 @@ func _process(delta: float) -> void:
 			movement_sprite.z_index = 0
 			movement_sprite.visible = true
 			movement.speed = 500
-			
+	'''
 		
 var immune = false
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carrot"):
 		area.get_parent().queue_free()
 		money += 5
-		currency_label.text = "carrots: " + str(money)
+		carrot_pickup.play()
+		currency_label.text = str(money)
 	elif area.is_in_group("healthPotion"):
 		area.get_parent().queue_free()
 		health += 20

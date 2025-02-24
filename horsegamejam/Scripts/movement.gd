@@ -5,7 +5,7 @@ var speed = 300; #determined by wheels and fans that will be added
 var vel = Vector2(0,0)
 #var parent_pos = get_parent().position
 
-const BOUNDINGBOX = [-2251,-1500,2251,1500]
+const BOUNDINGBOX = [-2251,-1550,2251,1460]
 
 @onready var parent = get_parent();
 
