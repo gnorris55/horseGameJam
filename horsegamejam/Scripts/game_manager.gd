@@ -12,6 +12,7 @@ var game_state = 0
 func _ready() -> void:
 	game_over_menu.visible = false
 	restart_button.visible = false
+	$AudioStreamPlayer2D.play()
 	pass # Replace with function body.
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://casp6m3llwv6b"]
+[gd_scene load_steps=9 format=3 uid="uid://casp6m3llwv6b"]
 
 [ext_resource type="PackedScene" uid="uid://dppjjkw15migb" path="res://Scenes/horse.tscn" id="1_428cj"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_483gp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://npctohpgyyko" path="res://Scenes/enemy_manager.tscn" id="5_llilm"]
 [ext_resource type="PackedScene" uid="uid://s05nmmd5gvxd" path="res://Scenes/Zax_Scene.tscn" id="5_vvtll"]
 [ext_resource type="FontFile" uid="uid://1prm3oj6cy4s" path="res://Assets/fonts/PressStart2P-Regular.ttf" id="6_olxyq"]
+[ext_resource type="AudioStream" uid="uid://bwictvtif4khc" path="res://Assets/audio/To Pimp a Horsefly.mp3" id="7_6iogn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p46xl"]
 font_size = 50
@@ -82,5 +83,10 @@ text = "RESTART"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PimpingMenu" parent="CanvasLayer" instance=ExtResource("5_vvtll")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_6iogn")
+volume_db = -5.0
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer2/Control/Control/restartButton" to="." method="_on_restart_button_pressed"]
