@@ -27,6 +27,8 @@ signal pimp_change(slot: int, pimp: int)
 @onready var pimpingIcon = $PimpingIcon
 @onready var pimpSlotsNode = $PimpSlots
 @onready var pimpSlots = [$PimpSlots/HornSlot, $PimpSlots/BodySlot, $PimpSlots/MinifridgeSlot, $PimpSlots/TailSlot, $PimpSlots/HoovesSlot]
+@onready var pimpSuccess_audio = $PimpSuccess
+@onready var pimpFailure_audio = $PimpUpFailed
 var horse_node
 var pimpsDict: Dictionary
 
@@ -36,6 +38,7 @@ func _ready() -> void:
 	horse_node = get_node_or_null("../../Horse")
 	for pimpSlot in pimpSlots:
 		pimpSlot.close_all_except.connect(_close_all_except)
+		pimpSlot.sounding_upgrade.connect(_play_sound)
 		pimpSlot.horse_node = horse_node
 		for pimp in pimpSlot.get_node("Pimps").get_children():
 			pimpsDict[pimp.name] = pimp
@@ -65,8 +68,8 @@ func _input(event: InputEvent) -> void:
 		#set_pimp_unlock("armor5", 10)
 	#if (event is InputEventKey) and event.pressed and event.keycode == KEY_O:
 		#print(getall_pimp_prices())
-	if (event is InputEventKey) and event.pressed and event.keycode == KEY_P:
-		horse_node.money = 100
+	#if (event is InputEventKey) and event.pressed and event.keycode == KEY_P:
+		#horse_node.money = 100
 	
 	 #Mouse in viewport coordinates.
 	if (event is InputEventMouseMotion) \
@@ -83,6 +86,12 @@ func _close_all_except(except: Node) -> void:
 	for pimpSlot in pimpSlots:
 		if pimpSlot == except: continue
 		pimpSlot.get_node("Pimps").visible = false
+
+func _play_sound(unlocked: bool):
+	if unlocked:
+		pimpSuccess_audio.play()
+	else:
+		pimpFailure_audio.play()
 
 func _pimp_changed(slot, pimp, unlocked):
 	#print(slot, " ", pimp, " ", unlocked) # Test

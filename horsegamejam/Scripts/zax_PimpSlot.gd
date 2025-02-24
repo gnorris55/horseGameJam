@@ -1,6 +1,7 @@
 extends Button
 
 signal close_all_except(pimpSlot: Node)
+signal sounding_upgrade(is_unlocked: bool)
 
 var pimps: Array[Node]
 var pricing = [43, 68, 117, 175, 224]
@@ -41,18 +42,21 @@ func _button_pressed() -> void:
 	emit_signal("close_all_except", self)
 
 func _pimp_pressed(pimp: Node) -> void:
-	print(horse_node.money)
-	if horse_node.money >= pimp.get_meta("Carrots") and not pimp.get_meta("Unlocked"):
-		horse_node.money -= pimp.get_meta("Carrots")
-		pimp.set_meta("Unlocked", true)
+	#print(horse_node.money)
 	if pimp.get_meta("Unlocked"):
 		set_button_icon(pimp.get_button_icon())
-		global_pimpbus.change_pimp(self.name, pimp.name, pimp.get_meta("Unlocked"))
+	elif horse_node.money >= pimp.get_meta("Carrots"):
+		horse_node.money -= pimp.get_meta("Carrots")
+		pimp.set_meta("Unlocked", true)
+		emit_signal("sounding_upgrade", true)
+	else:
+		emit_signal("sounding_upgrade", false)
+	global_pimpbus.change_pimp(self.name, pimp.name, pimp.get_meta("Unlocked"))
 
 func _signal_pimpbus_pimp_changed(slot: String, pimp: String, unlocked:bool) -> void: pass
 
 func asdf(node: Node):
-	print(node)
+	#print(node)
 	pass
 
 #################################################################################################
