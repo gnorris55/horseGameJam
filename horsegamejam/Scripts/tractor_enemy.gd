@@ -41,7 +41,8 @@ func take_damage(damage, hit_back = false):
 	health -= damage
 	health_bar.value = health
 	#TODO: make the bounce back more realistic
-	
+	if health >=0:
+		$hitSound.play()
 	if (health <= 0 and health_bar.visible):
 		var enemy_manager = get_parent()
 		enemy_manager.enemy_drop(global_position)
@@ -50,7 +51,7 @@ func take_damage(damage, hit_back = false):
 		sprite_2d.visible = false
 		area_2d.queue_free()
 		health_bar.visible = false
-
+		$deathSound.play()
 		$sheildSprite.queue_free()
 		
 		
@@ -59,4 +60,5 @@ func take_damage(damage, hit_back = false):
 
 
 func _on_death_timer_timeout() -> void:
+	
 	queue_free()

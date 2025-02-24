@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://chmhemdk8xujm"]
 
 [ext_resource type="Script" path="res://Scripts/horse_projectile.gd" id="1_6gtl8"]
-[ext_resource type="Texture2D" uid="uid://c6ag63hkrl2ky" path="res://Assets/Sprites/bullet.png" id="2_nwwr8"]
+[ext_resource type="Texture2D" uid="uid://c6ag63hkrl2ky" path="res://Assets/Sprites/bullet_medium.png" id="2_nwwr8"]
 [ext_resource type="Texture2D" uid="uid://bleijhuq2y3xv" path="res://Assets/Sprites/laser2.png" id="3_2y8sl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc7tp"]

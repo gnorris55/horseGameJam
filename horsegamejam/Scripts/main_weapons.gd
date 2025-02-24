@@ -18,7 +18,7 @@ const attack_names = ["empty","lazer","machinegun","shotgun"]
 const GUNS = {
 	"lazer":{"spread":0,"bullets":1,"damage":50,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":30},
 	"machinegun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":1},
-	"shotgun":{"spread":10,"bullets":10,"damage":5,"cooldown":0.5,"speed":700,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":5}
+	"shotgun":{"spread":10,"bullets":10,"damage":5,"cooldown":0.5,"speed":700,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":10}
 	}
 var countdown_finished = true
 
@@ -72,8 +72,8 @@ func _process(delta: float) -> void:
 				l.position = horse_node.position
 				l.set_type(GUNS[attack_type].bullet_type,GUNS[attack_type].offset)
 				
-				horse_node.stamina -= GUNS[attack_type].stamina
-				horse_node.stamina_bar.value = horse_node.stamina 
+			horse_node.stamina -= GUNS[attack_type].stamina
+			horse_node.stamina_bar.value = horse_node.stamina 
 			
 			
 			#---old laser code ---

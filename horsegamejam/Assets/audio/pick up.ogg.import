@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dptqm220lbk3v"
+path="res://.godot/imported/pick up.ogg-eea441605487567a2fd4fde5812af6e1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/audio/pick up.ogg"
+dest_files=["res://.godot/imported/pick up.ogg-eea441605487567a2fd4fde5812af6e1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
