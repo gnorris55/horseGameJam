@@ -23,18 +23,20 @@ script = ExtResource("1_483gp")
 
 [node name="enemyMananager" parent="." instance=ExtResource("5_llilm")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer2"]
+[node name="PimpingMenu" parent="CanvasLayer" instance=ExtResource("5_vvtll")]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchor_right = 1.009
 anchor_bottom = 1.0
 offset_left = 21.0
 offset_top = 5.0
-offset_right = -0.368042
-offset_bottom = 3.0
+offset_right = 21.0
+offset_bottom = 5.0
 
-[node name="Control" type="Control" parent="CanvasLayer2/Control"]
+[node name="Control" type="Control" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,7 +50,7 @@ offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="gameOverText" type="Label" parent="CanvasLayer2/Control/Control"]
+[node name="gameOverText" type="Label" parent="CanvasLayer/Control/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,7 +68,8 @@ theme_override_font_sizes/font_size = 12
 text = "GAME OVER!"
 label_settings = SubResource("LabelSettings_p46xl")
 
-[node name="restartButton" type="Button" parent="CanvasLayer2/Control/Control"]
+[node name="restartButton" type="Button" parent="CanvasLayer/Control/Control"]
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -80,13 +83,11 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "RESTART"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PimpingMenu" parent="CanvasLayer" instance=ExtResource("5_vvtll")]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_6iogn")
 volume_db = -5.0
 parameters/looping = true
 
-[connection signal="pressed" from="CanvasLayer2/Control/Control/restartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Control/restartButton" to="." method="_on_restart_button_pressed"]
