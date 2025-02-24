@@ -1,38 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://npctohpgyyko"]
+[gd_scene load_steps=3 format=3 uid="uid://npctohpgyyko"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_manager.gd" id="1_o8vb7"]
+[ext_resource type="FontFile" uid="uid://1prm3oj6cy4s" path="res://Assets/fonts/PressStart2P-Regular.ttf" id="2_1ngbe"]
 
 [node name="enemyMananager" type="Node2D" groups=["enemyManager"]]
 script = ExtResource("1_o8vb7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="roundNum" type="Label" parent="CanvasLayer"]
-offset_left = 973.0
-offset_top = 80.0
-offset_right = 1013.0
-offset_bottom = 103.0
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.988
+offset_right = -2.0
+offset_bottom = -0.223999
+
+[node name="details" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchor_left = 0.844
+anchor_top = 0.225
+anchor_right = 0.844
+anchor_bottom = 0.225
+offset_left = -91.6
+offset_top = -62.0
+offset_right = 91.4
+offset_bottom = 62.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/details"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="roundNum" type="Label" parent="CanvasLayer/Control/details/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1ngbe")
+theme_override_font_sizes/font_size = 12
 text = "round: 1"
 
-[node name="timeLeftRound" type="Label" parent="CanvasLayer"]
-offset_left = 974.0
-offset_top = 103.0
-offset_right = 1068.0
-offset_bottom = 126.0
+[node name="timeLeftRound" type="Label" parent="CanvasLayer/Control/details/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1ngbe")
+theme_override_font_sizes/font_size = 12
 text = "round timer"
 
-[node name="numEnemiesLabel" type="Label" parent="CanvasLayer"]
-offset_left = 974.0
-offset_top = 125.0
-offset_right = 1070.0
-offset_bottom = 148.0
+[node name="numEnemiesLabel" type="Label" parent="CanvasLayer/Control/details/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1ngbe")
+theme_override_font_sizes/font_size = 12
 text = "enemies left"
 
-[node name="timeLeftBreak" type="Label" parent="CanvasLayer"]
-offset_left = 976.0
-offset_top = 153.0
-offset_right = 1067.0
-offset_bottom = 176.0
+[node name="timeLeftBreak" type="Label" parent="CanvasLayer/Control/details/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1ngbe")
+theme_override_font_sizes/font_size = 12
 text = "break time left: "
 
 [node name="roundTimer" type="Timer" parent="."]

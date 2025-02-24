@@ -11,11 +11,10 @@ const ROUND_STATE = 0
 const TRANSITION_STATE = 1
 const BREAK_STATE = 2
 
-
-@onready var round_num_label: Label = $CanvasLayer/roundNum
-@onready var time_left_round: Label = $CanvasLayer/timeLeftRound
-@onready var time_left_break: Label = $CanvasLayer/timeLeftBreak
-@onready var num_enemies_label: Label = $CanvasLayer/numEnemiesLabel
+@onready var round_num_label: Label = $CanvasLayer/Control/details/VBoxContainer/roundNum
+@onready var time_left_round: Label = $CanvasLayer/Control/details/VBoxContainer/timeLeftRound
+@onready var num_enemies_label: Label = $CanvasLayer/Control/details/VBoxContainer/numEnemiesLabel
+@onready var time_left_break: Label = $CanvasLayer/Control/details/VBoxContainer/timeLeftBreak
 
 @onready var round_timer: Timer = $roundTimer
 @onready var break_timer: Timer = $breakTimer

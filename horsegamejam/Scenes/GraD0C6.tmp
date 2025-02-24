@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://casp6m3llwv6b"]
+
+[ext_resource type="PackedScene" uid="uid://dppjjkw15migb" path="res://Scenes/horse.tscn" id="1_428cj"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_483gp"]
+[ext_resource type="PackedScene" uid="uid://dwqw0tx4016op" path="res://Scenes/map.tscn" id="4_4l65s"]
+[ext_resource type="PackedScene" uid="uid://npctohpgyyko" path="res://Scenes/enemy_manager.tscn" id="5_llilm"]
+[ext_resource type="PackedScene" uid="uid://s05nmmd5gvxd" path="res://Scenes/Zax_Scene.tscn" id="5_vvtll"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p46xl"]
+font_size = 50
+font_color = Color(1, 0, 0, 1)
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_483gp")
+
+[node name="Horse" parent="." instance=ExtResource("1_428cj")]
+
+[node name="Camera2D" type="Camera2D" parent="Horse"]
+
+[node name="Map" parent="." instance=ExtResource("4_4l65s")]
+
+[node name="enemyMananager" parent="." instance=ExtResource("5_llilm")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PimpingMenu" parent="CanvasLayer" instance=ExtResource("5_vvtll")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 5.0
+offset_right = 1162.0
+offset_bottom = 651.0
+
+[node name="gameOverText" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.292
+anchor_right = 0.5
+anchor_bottom = 0.292
+offset_left = -148.5
+offset_top = -34.632
+offset_right = 152.5
+offset_bottom = 34.368
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_p46xl")
+
+[node name="restartButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.434
+anchor_right = 0.506
+anchor_bottom = 0.434
+offset_left = -37.3461
+offset_top = -15.364
+offset_right = 37.6539
+offset_bottom = 15.636
+text = "RESTART"
+
+[connection signal="pressed" from="Control/restartButton" to="." method="_on_restart_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dppjjkw15migb"]
+[gd_scene load_steps=62 format=3 uid="uid://dppjjkw15migb"]
 
 [ext_resource type="Script" path="res://Scripts/horseManager.gd" id="1_nlkdp"]
 [ext_resource type="Script" path="res://Scripts/tail_weapon_manager.gd" id="2_gfgdi"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://dwpiom4oibef5" path="res://Assets/Sprites/Armor2.png" id="20_bl6sg"]
 [ext_resource type="Texture2D" uid="uid://dtelcpwgfbcl8" path="res://Assets/Sprites/Armor3.png" id="21_n7v7l"]
 [ext_resource type="Texture2D" uid="uid://c0xkpltcysbtv" path="res://Assets/Sprites/Armor4.png" id="22_gikab"]
+[ext_resource type="FontFile" uid="uid://1prm3oj6cy4s" path="res://Assets/fonts/PressStart2P-Regular.ttf" id="22_pr5yv"]
+[ext_resource type="Texture2D" uid="uid://cayfou83yulnb" path="res://Assets/Sprites/Carrot.png" id="22_xomnl"]
 [ext_resource type="Texture2D" uid="uid://c838tp7kjkrfo" path="res://Assets/Sprites/Armor5.png" id="23_yodn7"]
 [ext_resource type="Texture2D" uid="uid://dk0la7mn0pxtn" path="res://Assets/Sprites/fridge1.png" id="24_ui5a3"]
 [ext_resource type="Texture2D" uid="uid://biixsmx341scc" path="res://Assets/Sprites/fridge2.png" id="25_hp5yt"]
@@ -376,7 +378,7 @@ position = Vector2(1.48148, 0)
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_83jlf")
 autoplay = "default"
-frame_progress = 0.650231
+frame_progress = 0.500392
 offset = Vector2(-5, -18)
 
 [node name="tail" type="Line2D" parent="weapons/tailWeapons"]
@@ -409,36 +411,76 @@ shape = SubResource("CircleShape2D_phyna")
 layout_mode = 3
 anchor_right = 1.002
 anchor_bottom = 1.0
-offset_right = 1.0
+offset_top = -1.0
+offset_right = -2.30408
 offset_bottom = 1.0
 
-[node name="healthBar" type="ProgressBar" parent="playerUI/Control"]
-offset_left = 914.0
-offset_top = 23.0
-offset_right = 1138.0
-offset_bottom = 51.0
+[node name="Control" type="Control" parent="playerUI/Control"]
+layout_mode = 1
+anchor_left = 0.491
+anchor_top = 0.918
+anchor_right = 0.491
+anchor_bottom = 0.918
+offset_left = -132.632
+offset_top = -52.7
+offset_right = 132.368
+offset_bottom = 53.3
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="healthBar" type="ProgressBar" parent="playerUI/Control/Control"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 32.0
+offset_right = 253.0
+offset_bottom = 51.45
 theme_override_styles/background = SubResource("StyleBoxFlat_22p5n")
 theme_override_styles/fill = SubResource("StyleBoxFlat_haf6l")
 value = 100.0
 fill_mode = 1
 show_percentage = false
 
-[node name="staminaBar" type="ProgressBar" parent="playerUI/Control"]
-offset_left = 706.0
-offset_top = 24.0
-offset_right = 897.0
-offset_bottom = 51.0
+[node name="staminaBar" type="ProgressBar" parent="playerUI/Control/Control"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 60.0
+offset_right = 253.0
+offset_bottom = 80.0
 theme_override_styles/background = SubResource("StyleBoxFlat_x2aop")
 theme_override_styles/fill = SubResource("StyleBoxFlat_avs6o")
 fill_mode = 1
 show_percentage = false
 
-[node name="currency" type="Label" parent="playerUI/Control"]
-offset_left = 707.0
-offset_top = 62.0
-offset_right = 747.0
-offset_bottom = 85.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="currency2" type="Control" parent="playerUI/Control"]
+layout_mode = 1
+anchor_left = 0.831
+anchor_top = 0.062
+anchor_right = 0.831
+anchor_bottom = 0.062
+offset_left = -95.312
+offset_top = -7.3
+offset_right = -55.312
+offset_bottom = 32.7
+
+[node name="currency" type="Label" parent="playerUI/Control/currency2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.837
+anchor_top = 0.065
+anchor_right = 0.837
+anchor_bottom = 0.065
+offset_left = 14.52
+offset_top = 6.4
+offset_right = 74.52
+offset_bottom = 29.4
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("22_pr5yv")
+theme_override_font_sizes/font_size = 12
+text = "money"
+
+[node name="Sprite2D" type="Sprite2D" parent="playerUI/Control/currency2"]
+position = Vector2(27, 15)
+texture = ExtResource("22_xomnl")
 
 [node name="horseSpriteAnimated" type="AnimatedSprite2D" parent="."]
 z_index = 1

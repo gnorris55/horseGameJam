@@ -1,7 +1,8 @@
 extends Node2D
-@onready var health_bar: ProgressBar = $playerUI/Control/healthBar
-@onready var stamina_bar: ProgressBar = $playerUI/Control/staminaBar
-@onready var currency_label: Label = $playerUI/Control/currency
+
+@onready var health_bar: ProgressBar = $playerUI/Control/Control/healthBar
+@onready var stamina_bar: ProgressBar = $playerUI/Control/Control/staminaBar
+@onready var currency_label: Label = $playerUI/Control/currency2/currency
 
 @onready var immune_timer: Timer = $immuneTimer
 @onready var movement: Node2D = $movement
@@ -25,7 +26,7 @@ var armor_factors = [1,0.8,0.6,0.5,0.2,0.1]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	currency_label.text = "carrots: " + str(money)
+	currency_label.text = str(money)
 	health_bar.max_value = health
 	health_bar.value = health
 	movement_sprite.visible = false
@@ -103,7 +104,7 @@ func take_damage(damage, direction):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	currency_label.text = "carrots: " + str(money)
+	currency_label.text = str(money)
 	if stamina < MAX_STAMINA:
 		stamina += delta*stamina_factors[beer_fridge_state]
 		if stamina > MAX_STAMINA:
@@ -138,7 +139,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carrot"):
 		area.get_parent().queue_free()
 		money += 5
-		currency_label.text = "carrots: " + str(money)
+		currency_label.text = str(money)
 	elif area.is_in_group("healthPotion"):
 		area.get_parent().queue_free()
 		health += 20
