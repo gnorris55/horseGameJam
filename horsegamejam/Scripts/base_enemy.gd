@@ -9,13 +9,14 @@ extends Node2D
 @onready var hit_sound: AudioStreamPlayer2D = $hitSound
 @onready var death_sound: AudioStreamPlayer2D = $deathSound
 
-@export var speed = 130
+@export var speed = 150
 @export var health = 50
 
 var direction = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	speed = randfn(150, 20)
 	health_bar.max_value = health
 	health_bar.value = health
 

@@ -104,14 +104,14 @@ func _process(delta: float) -> void:
 				#var new_instance = enemy_arr[3].instantiate()
 				initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
 		
-			if (total_time > 10 and enemies.size() < 2):
+			if (total_time > 15 and enemies.size() < 2):
 				enemies.append(gun_enemy)
 				spawn_rareness += 4
 				#print("adding slow enemy")
 				#print(enemies)
 				
-			if (total_time > 25 and enemies.size() < 3):
-				spawn_rareness += 4
+			if (total_time > 40 and enemies.size() < 3):
+				spawn_rareness += 1
 				enemies.append(tractor_enemy)
 			'''	
 			if (total_time > 20 and enemies.size() < 4):
