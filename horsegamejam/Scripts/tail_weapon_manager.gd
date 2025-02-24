@@ -38,7 +38,7 @@ func _ready() -> void:
 # connect to signal from UI
 func pimp_changed(slot: String, type: String, unlocked: bool):
 	
-	if (slot == "TailSlot"):
+	if (slot == "TailSlot" and unlocked):
 		
 		if type == "machete":
 			tail.visible = true
