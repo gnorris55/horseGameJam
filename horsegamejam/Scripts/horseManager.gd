@@ -10,7 +10,7 @@ extends Node2D
 @onready var carrot_pickup: AudioStreamPlayer2D = $carrotPickup
 
 var MAX_STAMINA = 50
-@export var health = 100
+@export var health = 50
 @export var stamina = MAX_STAMINA
 var movement_state = 0
 
@@ -19,7 +19,7 @@ var tail_weapon_state = 0
 var armour_type_state = 0
 var beer_fridge_state = 0
 
-var money = 1000
+var money = 0
 
 var stamina_factors = [5,10,20,50]
 var armor_factors = [1,0.8,0.6,0.5,0.2,0.1]
@@ -85,12 +85,12 @@ func change_movement(type: String):
 		movement_sprite.play("fans")
 		movement_sprite.z_index = 1
 		movement_sprite.visible = true
-		movement.speed = 600
+		movement.speed = 500
 	elif type == "sawblades":
 		movement_sprite.play("saws")
 		movement_sprite.z_index = 0
 		movement_sprite.visible = true
-		movement.speed = 500
+		movement.speed = 450
 	
 func take_damage(damage, direction):
 	if (health > 0):
