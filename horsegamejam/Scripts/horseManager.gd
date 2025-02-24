@@ -1,8 +1,8 @@
 extends Node2D
+@onready var health_bar: ProgressBar = $playerUI/Control/healthBar
+@onready var stamina_bar: ProgressBar = $playerUI/Control/staminaBar
+@onready var currency_label: Label = $playerUI/Control/currency
 
-@onready var health_bar: ProgressBar = $playerUI/healthBar
-@onready var stamina_bar: ProgressBar = $playerUI/staminaBar
-@onready var currency_label: Label = $playerUI/currency
 @onready var immune_timer: Timer = $immuneTimer
 @onready var movement: Node2D = $movement
 @onready var movement_sprite: AnimatedSprite2D = $movementSprite

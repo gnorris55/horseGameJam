@@ -8,6 +8,7 @@ extends Node2D
 
 @onready var weapons_area_2d: Area2D = $weapon/weaponsArea2D
 @onready var weapons_area_2d_2: Area2D = $weapon/weaponsArea2D2
+@onready var saw_blade_sprite: AnimatedSprite2D = $weapon/sawBladeSprite
 
 var radius = 100
 var direction = -1
@@ -21,7 +22,7 @@ var center_point = Vector2(0, 0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	global_pimpbus.pimp_changed.connect(change_melee)
+	#global_pimpbus.pimp_changed.connect(change_melee)
 	
 	tail.add_point(global_position)
 	tail.add_point(weapon.global_position)
@@ -31,23 +32,28 @@ func _ready() -> void:
 	weapons_area_2d_2.monitoring = false
 	weapon.visible = false
 	tail.visible = false
+	
+	global_pimpbus.pimp_changed.connect(pimp_changed)
 
 # connect to signal from UI
-func change_melee(slot: String, type: String):
+func pimp_changed(slot: String, type: String, unlocked: bool):
 	
-	print("slot: " + str(slot))
-	print("type: " + str(type))
-	
-	if (slot == "BodySlot"):
+	if (slot == "TailSlot"):
 		
 		if type == "machete":
 			tail.visible = true
+			weapon_sprites.visible = true
+			saw_blade_sprite.visible = false
 			change_weapon_state(true, true, false, "machete", 20, 3)
 		elif type == "chainsaw":
 			tail.visible = true
+			weapon_sprites.visible = true
+			saw_blade_sprite.visible = false
 			change_weapon_state(true, true, false, "chainsaw", 40, 2)
 		elif type == "sawblade":
 			print("saw")
+			saw_blade_sprite.visible = true
+			weapon_sprites.visible = false
 			tail.visible = true
 			change_weapon_state(true, false, true, "sawBlade", 30, 3.5)
 
@@ -80,25 +86,7 @@ func _process(delta: float) -> void:
 	tail.points[0] = tail.to_local(global_position)
 	tail.points[1] = tail.to_local(weapon.global_position)
 
-	inputs()
 
-
-func inputs():
-	if Input.is_action_just_pressed("changeMelee"):
-		weapon_state = (weapon_state + 1) % 4
-		
-		if weapon_state == 0:
-			tail.visible = false
-			change_weapon_state(false, false, false, "machete", 20, 3)
-		elif weapon_state == 1:
-			tail.visible = true
-			change_weapon_state(true, true, false, "machete", 20, 3)
-		elif weapon_state == 2:
-			tail.visible = true
-			change_weapon_state(true, true, false, "chainsaw", 40, 2)
-		elif weapon_state == 3:
-			tail.visible = true
-			change_weapon_state(true, false, true, "sawBlade", 30, 3.5)
 
 func change_weapon_state(visible, monitoring1, monitoring2, animation, damage, speed):
 	weapon.visible = visible

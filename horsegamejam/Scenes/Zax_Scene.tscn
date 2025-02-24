@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bleijhuq2y3xv" path="res://Assets/Sprites/laser2.png" id="8_25fxo"]
 [ext_resource type="Texture2D" uid="uid://b8v22if5tvtvn" path="res://Assets/Sprites/TestSprites/icon.svg" id="9_c2xra"]
 [ext_resource type="Texture2D" uid="uid://b5fqlk5y4swi4" path="res://Assets/Sprites/Armor1.png" id="9_c8j61"]
-[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/machete.png" id="10_c6gw6"]
+[ext_resource type="Texture2D" uid="uid://oaa2n7luja0i" path="res://Assets/Sprites/Machete.png" id="10_c6gw6"]
 [ext_resource type="Texture2D" uid="uid://dwpiom4oibef5" path="res://Assets/Sprites/Armor2.png" id="10_lnsxd"]
 [ext_resource type="Texture2D" uid="uid://dtelcpwgfbcl8" path="res://Assets/Sprites/Armor3.png" id="11_eened"]
 [ext_resource type="Texture2D" uid="uid://c0xkpltcysbtv" path="res://Assets/Sprites/Armor4.png" id="12_0ccuh"]

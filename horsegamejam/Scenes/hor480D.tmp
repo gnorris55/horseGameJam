@@ -376,7 +376,7 @@ position = Vector2(1.48148, 0)
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_83jlf")
 autoplay = "default"
-frame_progress = 0.650231
+frame_progress = 0.650243
 offset = Vector2(-5, -18)
 
 [node name="tail" type="Line2D" parent="weapons/tailWeapons"]
@@ -407,15 +407,14 @@ shape = SubResource("CircleShape2D_phyna")
 
 [node name="Control" type="Control" parent="playerUI"]
 layout_mode = 3
-anchor_right = 1.002
+anchor_right = 0.998
 anchor_bottom = 1.0
-offset_right = 1.0
-offset_bottom = 1.0
+offset_right = 0.303955
 
 [node name="healthBar" type="ProgressBar" parent="playerUI/Control"]
-offset_left = 914.0
-offset_top = 23.0
-offset_right = 1138.0
+offset_left = 918.0
+offset_top = 24.0
+offset_right = 1094.0
 offset_bottom = 51.0
 theme_override_styles/background = SubResource("StyleBoxFlat_22p5n")
 theme_override_styles/fill = SubResource("StyleBoxFlat_haf6l")
