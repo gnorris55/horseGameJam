@@ -157,13 +157,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_immune_timer_timeout() -> void:
 	immune = false
 
-func pimp_changed(slot: String, type: String):#,unlocked: bool):
+func pimp_changed(slot: String, type: String, unlocked: bool):#,unlocked: bool):
 	
 	#print(slot,type,unlocked)
-	#if unlocked:
-	if slot == "HoovesSlot":
-		change_movement(type)
-	elif slot == "MinifridgeSlot":
-		change_fridge(type)
-	elif slot == "BodySlot":
-			change_armor(type)
+	if unlocked:
+		if slot == "HoovesSlot":
+			change_movement(type)
+		elif slot == "MinifridgeSlot":
+			change_fridge(type)
+		elif slot == "BodySlot":
+				change_armor(type)

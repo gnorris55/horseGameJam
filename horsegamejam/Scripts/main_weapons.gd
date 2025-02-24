@@ -92,12 +92,12 @@ func _process(delta: float) -> void:
 			$attack_cooldown.wait_time = GUNS[attack_type]["cooldown"]
 			$attack_cooldown.start()
 			countdown_finished = false
-func change_weapon(slot: String, type: String):#,unlocked: bool):
+func change_weapon(slot: String, type: String,unlocked: bool):#,unlocked: bool):
 	#print(slot)
 	#print(type)
 	#print(unlocked)
 	#print("thing equiped has been changed")
-	if slot == "HornSlot":# and unlocked:
+	if slot == "HornSlot" and unlocked:
 		attack_type = type
 		$weaponSprites.play(type)
 
