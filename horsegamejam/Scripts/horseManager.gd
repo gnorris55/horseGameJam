@@ -143,8 +143,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		carrot_pickup.play()
 		currency_label.text = str(money)
 	elif area.is_in_group("healthPotion"):
+		carrot_pickup.play()
 		area.get_parent().queue_free()
 		health += 20
+		if health > health_bar.max_value:
+			health = health_bar.max_value
 		health_bar.value = health
 	elif area.is_in_group("enemyArea2D") and !immune:
 		take_damage(20, area.get_parent().direction)
