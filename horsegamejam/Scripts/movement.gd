@@ -34,3 +34,7 @@ func _process(delta: float) -> void:
 	
 	var vec = Vector2(get_global_mouse_position().x - get_parent().position.x,get_global_mouse_position().y - get_parent().position.y)
 	parent.rotation = vec.angle()+ PI/2
+func move(amt):
+	var vec = Vector2(get_global_mouse_position().x - get_parent().position.x,get_global_mouse_position().y - get_parent().position.y)
+	vec.limit_length(1)
+	parent.position += vec*amt

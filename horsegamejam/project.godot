@@ -19,6 +19,11 @@ config/icon="res://Assets/Sprites/TestSprites/icon.svg"
 
 global_pimpbus="*res://Scripts/global_pimp_properties.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [global_group]
 
 horse="The main player character"

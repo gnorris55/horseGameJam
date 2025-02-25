@@ -16,13 +16,13 @@ var shoot_sound = load("res://Assets/audio/shot.ogg")
 #var attack_ind = 1
 const attack_names = ["empty","lazer","machinegun","shotgun"]
 const GUNS = {
-	"lazer":{"spread":0,"bullets":1,"damage":50,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":30},
-	"machinegun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":1},
-	"shotgun":{"spread":10,"bullets":10,"damage":5,"cooldown":0.5,"speed":700,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":10}
+	"lazer":{"spread":0,"bullets":1,"damage":50,"cooldown":0.5,"speed":2000,"bullet_duration":1,"bullet_type":"laser","offset":25,"stamina":30,"recoil":3},
+	"machinegun":{"spread":10,"bullets":1,"damage":3,"cooldown":0.05,"speed":1000,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":1,"recoil":1},
+	"shotgun":{"spread":10,"bullets":10,"damage":5,"cooldown":0.5,"speed":700,"bullet_duration":1,"bullet_type":"bullet","offset":2,"stamina":10,"recoil":10}
 	}
 var countdown_finished = true
 
-
+var RECOIL = 0.05
 #old laser system
 #const LASER_ATTACK_TIME = 0.5
 #const LASER_DAMAGE = 3
@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 	#else:
 		#$weaponSprites.visible = true
 		#$weaponSprites.play(attack_type)
+
 	if attack_type!= "empty" and Input.is_action_pressed("attack") and horse_node.stamina >= GUNS[attack_type].stamina:
 		if countdown_finished == true:
 			if attack_type == "lazer":
@@ -57,7 +58,7 @@ func _process(delta: float) -> void:
 			else:
 				$AudioStreamPlayer2D.stream = shoot_sound
 				$AudioStreamPlayer2D.play()
-				
+			horse_node.get_node("movement").move(-RECOIL*GUNS[attack_type].recoil)
 			#var i = 0
 			for i in GUNS[attack_type].bullets:
 				var l = projectile_scene.instantiate()
