@@ -11,7 +11,6 @@ script = ExtResource("1_f2ami")
 [node name="Horse" parent="." instance=ExtResource("2_kbp45")]
 
 [node name="Camera2D" type="Camera2D" parent="Horse"]
-zoom = Vector2(0.5, 0.5)
 
 [node name="baseEnemy" parent="." instance=ExtResource("3_g8mri")]
 position = Vector2(606, -79)
