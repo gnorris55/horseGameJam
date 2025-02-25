@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://biqcwemfxq21u" path="res://Assets/audio/oof.ogg" id="5_wgqwx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjq2d"]
-radius = 23.0
+radius = 15.0333
 
 [sub_resource type="Curve" id="Curve_dnpaa"]
 _data = [Vector2(0.0674157, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.859551, 0.175824), 0.0, 0.0, 0, 0]

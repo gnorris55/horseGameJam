@@ -11,7 +11,7 @@ _data = [Vector2(0.0674157, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.859551, 0.17582
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5fw7"]
-radius = 19.6469
+radius = 14.0357
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pngqo"]
 bg_color = Color(1, 0, 0, 0.47451)

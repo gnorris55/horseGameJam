@@ -206,7 +206,7 @@ animations = [{
 [sub_resource type="PrismMesh" id="PrismMesh_no186"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_phyna"]
-radius = 23.0
+radius = 18.1108
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22p5n"]
 bg_color = Color(1, 0, 0, 0.47451)
