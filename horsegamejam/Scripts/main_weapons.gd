@@ -22,11 +22,12 @@ const GUNS = {
 	}
 var countdown_finished = true
 
-var RECOIL = 0.05
+var RECOIL = 0#suggested 0.05
 #old laser system
 #const LASER_ATTACK_TIME = 0.5
 #const LASER_DAMAGE = 3
 
+var weapon_sprite_a = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,7 +50,10 @@ func _process(delta: float) -> void:
 	#else:
 		#$weaponSprites.visible = true
 		#$weaponSprites.play(attack_type)
-
+	#if $weaponSprites.position.y > 0:
+		#weapon_sprite_v -= 1
+		#weaopon
+		
 	if attack_type!= "empty" and Input.is_action_pressed("attack") and horse_node.stamina >= GUNS[attack_type].stamina:
 		if countdown_finished == true:
 			if attack_type == "lazer":

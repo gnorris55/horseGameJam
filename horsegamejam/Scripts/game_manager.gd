@@ -14,7 +14,7 @@ func _ready() -> void:
 	control.hide()
 	game_over_menu.visible = false
 	restart_button.visible = false
-	$AudioStreamPlayer2D.play()
+	$AudioStreamPlayer.play()
 	pass # Replace with function body.
 
 
